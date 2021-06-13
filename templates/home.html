@@ -16,17 +16,25 @@
     <body>
         <main>
             <!--<p>TCS LST is: {{ value }}</p>-->
-            <!--<p>TCS LST is: <span id="lst">{{ value }}</span></p>-->
-            <p>TCS LST is: <span id="lst"></span></p>
+            <p>TCS LST is: <span id="lst">{{ value_lst }}</span></p>
+            <p>TCS Heartbeat is: <span id="hb">{{ value_hb }}</span></p>
+            <!--<p>TCS LST is: <span id="lst"></span></p>-->
             <p>This is to see if it updates: {{ test }}</p>
         </main>
         <p id="demo"></p>
         <script>
             $(document).ready(function() {
-                            setInterval("ajaxd()",500);
+                            setInterval("getEpicsVals()",500);
                         });
-            function ajaxd() {
-                            $("#lst").load("/lst");
+            function getEpicsVals() {
+                            //$("#lst").load("/lst");
+                            $.getJSON({
+                            url: "/epics",
+                            success: function(data) {
+                                            $("#lst").text(data.value_lst);
+                                            $("#hb").text(data.value_hb);
+                                        }
+                                        });
                         }
         </script>
     </body>
