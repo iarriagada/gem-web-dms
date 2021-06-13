@@ -24,14 +24,27 @@
         <p id="demo"></p>
         <script>
             $(document).ready(function() {
-                            setInterval("getEpicsVals()",500);
+                            setInterval("getEpicsValsFast()",500);
                         });
-            function getEpicsVals() {
+            $(document).ready(function() {
+                            setInterval("getEpicsValsSlow()",2000);
+                        });
+            function getEpicsValsFast() {
                             //$("#lst").load("/lst");
                             $.getJSON({
-                            url: "/epics",
+                            url: "/epics_fast",
                             success: function(data) {
                                             $("#lst").text(data.value_lst);
+                                            //$("#hb").text(data.value_hb);
+                                        }
+                                        });
+                        }
+            function getEpicsValsSlow() {
+                            //$("#lst").load("/lst");
+                            $.getJSON({
+                            url: "/epics_slow",
+                            success: function(data) {
+                                            //$("#lst").text(data.value_lst);
                                             $("#hb").text(data.value_hb);
                                         }
                                         });
