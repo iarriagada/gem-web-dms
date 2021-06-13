@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Test 666</title>
+        <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+        <!--<script>-->
+            <!--function-->
+            <!--window.setInterval(updateLST,1000);-->
+            <!--function updateLST() {-->
+                            <!--var tcs_lst = {{ value }};-->
+                            <!--document.getElementById("lst").innerHTML = tcs_lst;-->
+                        <!--}-->
+        <!--</script>-->
+    </head>
+    <body>
+        <main>
+            <!--<p>TCS LST is: {{ value }}</p>-->
+            <!--<p>TCS LST is: <span id="lst">{{ value }}</span></p>-->
+            <p>TCS LST is: <span id="lst"></span></p>
+            <p>This is to see if it updates: {{ test }}</p>
+        </main>
+        <p id="demo"></p>
+        <script>
+            $(document).ready(function() {
+                            setInterval("ajaxd()",500);
+                        });
+            function ajaxd() {
+                            $("#lst").load("/lst");
+                        }
+        </script>
+    </body>
+</html>
+
