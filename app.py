@@ -15,10 +15,10 @@ chan_list = ["tcs:LST", "tcs:heartbeat"]
 # print(tcs_hb.value)
 app = Flask(__name__)
 
+# This is are all the endpoint definitions
 @app.route("/")
 def home():
-    # global test
-    test[0] += 1
+    test[0] += 1 # Variable to keep track of home page refreshes
     hb_val = vals_epics['tcs:heartbeat']
     lst_val = vals_epics['tcs:LST']
     # lst_val = tcs_lst.value
@@ -33,12 +33,9 @@ def home():
 
 @app.route("/epics_slow")
 def update_epics_slow():
-    # lst_val = tcs_lst.value
-    # hb_val = tcs_hb.value
-    # print(f"this is the lst: {lst_val}")
-    # print(f"this is the heartbeat: {hb_val}")
+    # Reference the global array of EPICS values
     vfd = vals_epics['tcs:heartbeat']
-    print(f"this is the lst from dict: {vfd}")
+    print(f"this is the hb from dict: {vfd}")
     values = {
         'value_hb':vfd
     }
@@ -46,8 +43,6 @@ def update_epics_slow():
 
 @app.route("/epics_fast")
 def update_epics_fast():
-    # lst_val = tcs_lst.value
-    # print(f"this is the lst: {lst_val}")
     vfd = vals_epics['tcs:LST']
     print(f"this is the lst from dict: {vfd}")
     values = {
@@ -55,6 +50,17 @@ def update_epics_fast():
     }
     return jsonify(values)
 
+@app.route("/send_cmds", methods=["GET", "POST"])
+def send_epics_cmds():
+    if request.method == 'POST':
+        input_a = request.get_json().get('val_a')
+        print(f"This was sent: {input_a}")
+    return jsonify(i1=input_a)
+
+
+# This are the rest of the methods to interact with epics plus other stuff
+
+# Function to trigger channel monitors
 def epics_chan_connect(chan_list):
     epics_chans = {chan:epics.PV(chan) for chan in chan_list}
     time.sleep(0.5)

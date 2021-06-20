@@ -2,54 +2,120 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Test 666</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BOSS WebUI</title>
+        <link rel="stylesheet" href="/static/css/styles.css" />
         <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
-        <!--<script>-->
-            <!--function-->
-            <!--window.setInterval(updateLST,1000);-->
-            <!--function updateLST() {-->
-                            <!--var tcs_lst = {{ value }};-->
-                            <!--document.getElementById("lst").innerHTML = tcs_lst;-->
-                        <!--}-->
-        <!--</script>-->
-    </head>
-    <body>
-        <main>
-            <!--<p>TCS LST is: {{ value }}</p>-->
-            <p>TCS LST is: <span id="lst">{{ value_lst }}</span></p>
-            <p>TCS Heartbeat is: <span id="hb">{{ value_hb }}</span></p>
-            <!--<p>TCS LST is: <span id="lst"></span></p>-->
-            <p>This is to see if it updates: {{ test }}</p>
-        </main>
-        <p id="demo"></p>
         <script>
-            $(document).ready(function() {
-                            setInterval("getEpicsValsFast()",500);
-                        });
-            $(document).ready(function() {
-                            setInterval("getEpicsValsSlow()",2000);
-                        });
             function getEpicsValsFast() {
-                            //$("#lst").load("/lst");
                             $.getJSON({
                             url: "/epics_fast",
                             success: function(data) {
                                             $("#lst").text(data.value_lst);
-                                            //$("#hb").text(data.value_hb);
                                         }
                                         });
                         }
             function getEpicsValsSlow() {
-                            //$("#lst").load("/lst");
                             $.getJSON({
                             url: "/epics_slow",
                             success: function(data) {
-                                            //$("#lst").text(data.value_lst);
                                             $("#hb").text(data.value_hb);
                                         }
                                         });
                         }
+            //function getInpValue() {
+            //                var vala = $("#inp1").val();
+            //                $.post('/send_cmds', {"vala":vala});
+            //            }
+            function sendEpicsCmd() {
+                            $("#sendb").click(function() {
+                                            var vala = $('input[name="a1"]').val();
+                                            //var vala = 666;
+                                            $.ajax({
+                                            type: "POST",
+                                            url: '/send_cmds',
+                                            contentType: 'application/json',
+                                            data:  JSON.stringify({
+                                                  val_a: vala,
+                                                  val_b: 0
+                                                        })
+                                                        });
+                                            //$.post('/send_cmds', {val_a:vala});
+                                        });
+                        }
+            $(document).ready(function() {
+                            setInterval("getEpicsValsFast()",1000);
+                            setInterval("getEpicsValsSlow()",2000);
+                            sendEpicsCmd();
+                        });
         </script>
+    </head>
+    <body>
+        <header class="banner">
+            <div class="banner__title">BOSS Web UI</div>
+            <div class="banner__status">
+                <li class="banner__status-mode" id="tel_mode">Standby</li>
+                <li class="banner__status-power" id="tel_power">Commercial</li>
+            </div>
+        </header>
+        <main class="main">
+            <p>TCS LST is: <span id="lst">{{ value_lst }}</span></p>
+            <p>TCS Heartbeat is: <span id="hb">{{ value_hb }}</span></p>
+            <p>Enter a number here: <input id="inp1" type="text" name="a1" />
+                <button type="submit" id="sendb">Sum the HB!</button>
+            </p>
+            <p>This is to see if it updates: {{ test }}</p>
+            <div class="left_p">
+                <section class="ecs_power">
+                    <div class="main__onoff">
+                        <span class="main__onoff-label">Power</span>
+                            <button class="main__onoff-on">ON</button>
+                            <button class="main__onoff-off">OFF</button>
+                    </div>
+                    <ul class="section_col">
+                        <li class="ecs_mech__status">Dome</li>
+                        <li class="ecs_mech__status">Top Shutter</li>
+                        <li class="ecs_mech__status">Bottom Shutter</li>
+                        <li class="ecs_mech__status">East Ventgate</li>
+                        <li class="ecs_mech__status">West Ventgate</li>
+                    </ul>
+                </section>
+                <section class="ecs_init">
+                    <div class="ecs_init__cmd">
+                        <span class="ecs_init__cmd-label">Initialize</span>
+                        <button class="ecs_init__cmd-bttn">INIT</button>
+                    </div>
+                </section>
+                <section class="ecs_svclose">
+                    <p>Place holder for Shutters and Vents Table</p>
+                </section>
+                <section class="ecs_dpark">
+                        <button class="main__cmd-bttn">PARK</button>
+                        <span class="ecs_dpark__status">STOPPED</span>
+                </section>
+            </div>
+            <div class="center_p">
+                <section class="ecs_env">
+                    <p>Place holder for ECS Environment</p>
+                </section>
+                <section class="covers_cmd">
+                    <p>Place holder for Covers Commands</p>
+                </section>
+            </div>
+            <div class="right_p">
+                <section class="hbs">
+                    <p>Place holder for HBS control</p>
+                </section>
+                <section class="crcs">
+                    <p>Place holder for CRCS control</p>
+                </section>
+                <section class="mcs">
+                    <p>Place holder for MCS control</p>
+                </section>
+            </div>
+        </main>
+        <footer class="footer">
+        </footer>
     </body>
 </html>
 
