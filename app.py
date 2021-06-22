@@ -5,8 +5,14 @@ import epics
 import os
 import time
 
-os.environ["EPICS_CA_ADDR_LIST"] = "172.17.2.36"
-chan_list = ["tcs:LST", "tcs:heartbeat"]
+os.environ["EPICS_CA_ADDR_LIST"] = "172.17.2.36 172.17.2.31"
+chan_list = ["tcs:LST",
+             "tcs:heartbeat",
+             "ec:tsDriveStat",
+             "ec:bsDriveStat",
+             "ec:evgDriveStat",
+             "ec:wvgDriveStat",
+             "ec:domeDriveStat"]
 # tcs_lst = epics.PV("tcs:LST")
 # time.sleep(0.200)
 # print(tcs_lst.value)
@@ -43,10 +49,21 @@ def update_epics_slow():
 
 @app.route("/epics_fast")
 def update_epics_fast():
+    status_color = lambda x:'#FF0000' * (1 - x) + '#00FF00' * x
     vfd = vals_epics['tcs:LST']
+    ts_st = status_color(vals_epics['ec:tsDriveStat'])
+    bs_st = status_color(vals_epics['ec:bsDriveStat'])
+    evg_st = status_color(vals_epics['ec:evgDriveStat'])
+    wvg_st = status_color(vals_epics['ec:wvgDriveStat'])
+    dome_st = status_color(vals_epics['ec:domeDriveStat'])
     print(f"this is the lst from dict: {vfd}")
     values = {
         'value_lst':vfd,
+        'ts_st':ts_st,
+        'bs_st':bs_st,
+        'dome_st':dome_st,
+        'evg_st':evg_st,
+        'wvg_st':wvg_st,
     }
     return jsonify(values)
 
@@ -63,6 +80,7 @@ def send_epics_cmds():
 # Function to trigger channel monitors
 def epics_chan_connect(chan_list):
     epics_chans = {chan:epics.PV(chan) for chan in chan_list}
+    print(epics_chans.keys())
     time.sleep(0.5)
     for c in epics_chans:
         print(epics_chans[c].value)
@@ -70,6 +88,7 @@ def epics_chan_connect(chan_list):
 
 def mon_epics_chans(epics_chans, vals_epics):
     for c in epics_chans:
+        vals_epics[c] = 0 # Initialize all values to 0
         epics_chans[c].add_callback(on_change, values=vals_epics)
 
 def on_change(pvname=None, value=None, timestamp=None, **kw):

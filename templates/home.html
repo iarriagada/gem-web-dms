@@ -7,11 +7,22 @@
         <link rel="stylesheet" href="/static/css/styles.css" />
         <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
         <script>
+            function getLST(data) {
+                            $("#lst").text(data.value_lst);
+                        }
+            function getECSPwrStatus(data) {
+                            $("#dome_pwr").css('background-color', data.dome_st);
+                            $("#ts_pwr").css('background-color', data.ts_st);
+                            $("#bs_pwr").css('background-color', data.bs_st);
+                            $("#evg_pwr").css('background-color', data.evg_st);
+                            $("#wvg_pwr").css('background-color', data.wvg_st);
+                        }
             function getEpicsValsFast() {
                             $.getJSON({
                             url: "/epics_fast",
                             success: function(data) {
-                                            $("#lst").text(data.value_lst);
+                                            getLST(data);
+                                            getECSPwrStatus(data);
                                         }
                                         });
                         }
@@ -59,13 +70,15 @@
             </div>
         </header>
         <main class="main">
-            <p>TCS LST is: <span id="lst">{{ value_lst }}</span></p>
-            <p>TCS Heartbeat is: <span id="hb">{{ value_hb }}</span></p>
-            <p>Enter a number here: <input id="inp1" type="text" name="a1" />
-                <button type="submit" id="sendb">Sum the HB!</button>
-            </p>
-            <p>This is to see if it updates: {{ test }}</p>
             <div class="left_p">
+                <section class="test_crap">
+                    <p>TCS LST is: <span id="lst">{{ value_lst }}</span></p>
+                    <p>TCS Heartbeat is: <span id="hb">{{ value_hb }}</span></p>
+                    <p>Enter a number here: <input id="inp1" type="text" name="a1" />
+                        <button type="submit" id="sendb">Sum the HB!</button>
+                    </p>
+                    <p>This is to see if it updates: {{ test }}</p>
+                </section>
                 <section class="ecs_power">
                     <div class="main__onoff">
                         <span class="main__onoff-label">Power</span>
@@ -73,11 +86,11 @@
                             <button class="main__onoff-off">OFF</button>
                     </div>
                     <ul class="section_col">
-                        <li class="ecs_mech__status">Dome</li>
-                        <li class="ecs_mech__status">Top Shutter</li>
-                        <li class="ecs_mech__status">Bottom Shutter</li>
-                        <li class="ecs_mech__status">East Ventgate</li>
-                        <li class="ecs_mech__status">West Ventgate</li>
+                        <li class="ecs_mech__status"><span class="indicator" id="dome_pwr"></span> Dome</li>
+                        <li class="ecs_mech__status"><span class="indicator" id="ts_pwr"></span> Top Shutter</li>
+                        <li class="ecs_mech__status"><span class="indicator" id="bs_pwr"></span> Bottom Shutter</li>
+                        <li class="ecs_mech__status"><span class="indicator" id="evg_pwr"></span> East Ventgate</li>
+                        <li class="ecs_mech__status"><span class="indicator" id="wvg_pwr"></span> West Ventgate</li>
                     </ul>
                 </section>
                 <section class="ecs_init">
