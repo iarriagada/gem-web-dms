@@ -70,7 +70,8 @@ def update_epics_fast():
 @app.route("/send_cmds", methods=["GET", "POST"])
 def send_epics_cmds():
     if request.method == 'POST':
-        input_a = request.get_json().get('val_a')
+        # input_a = request.get_json().get('val_a')
+        input_a = request.get_json()
         print(f"This was sent: {input_a}")
     return jsonify(i1=input_a)
 
@@ -88,7 +89,7 @@ def epics_chan_connect(chan_list):
 
 def mon_epics_chans(epics_chans, vals_epics):
     for c in epics_chans:
-        vals_epics[c] = 0 # Initialize all values to 0
+        vals_epics[c] = epics_chans[c].value # Initialize all values
         epics_chans[c].add_callback(on_change, values=vals_epics)
 
 def on_change(pvname=None, value=None, timestamp=None, **kw):

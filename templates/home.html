@@ -40,7 +40,8 @@
             //            }
             function sendEpicsCmd() {
                             $("#sendb").click(function() {
-                                            var vala = $('input[name="a1"]').val();
+                                            //var vala = $('input[name="a1"]').val();
+                                            var vala = $("#inp1").val();
                                             //var vala = 666;
                                             $.ajax({
                                             type: "POST",
@@ -49,6 +50,23 @@
                                             data:  JSON.stringify({
                                                   val_a: vala,
                                                   val_b: 0
+                                                        })
+                                                        });
+                                            //$.post('/send_cmds', {val_a:vala});
+                                        });
+                            $("#az_assrt").focus(function() {
+                                            //var vala = $('input[name="a1"]').val();
+                                            $("#az_assrt").prop("selectedIndex", -1)
+                                        }).change(function() {
+                                            //var vala = $('input[name="a1"]').val();
+                                            var valb = $("#az_assrt").val();
+                                            //var vala = 666;
+                                            $.ajax({
+                                            type: "POST",
+                                            url: '/send_cmds',
+                                            contentType: 'application/json',
+                                            data:  JSON.stringify({
+                                                  val_b: valb
                                                         })
                                                         });
                                             //$.post('/send_cmds', {val_a:vala});
@@ -82,8 +100,7 @@
                 <section class="ecs_power">
                     <div class="main__onoff">
                         <span class="main__onoff-label">Power</span>
-                            <button class="main__onoff-on">ON</button>
-                            <button class="main__onoff-off">OFF</button>
+                            <button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>
                     </div>
                     <ul class="section_col">
                         <li class="ecs_mech__status"><span class="indicator" id="dome_pwr"></span> Dome</li>
@@ -124,6 +141,13 @@
                 </section>
                 <section class="mcs">
                     <p>Place holder for MCS control</p>
+                    <div class="assert">
+                        <select class="assert__ddm" id="az_assrt">
+                            <option value="" selected disabled hidden>Select Action</option>
+                            <option value="2">Assert</option>
+                            <option value="1">Disassert</option>
+                        </select>
+                    </div>
                 </section>
             </div>
         </main>
