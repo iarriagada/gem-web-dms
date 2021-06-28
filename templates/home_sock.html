@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            var socket = io();
+            socket.on('connect', function() {
+                socket.emit('my_event', {data: 'I\'m connected!'});
+            });
+            socket.on('my_response', function(data) {
+                $('#hb').text(data.tcs_hb);
+                $('#lst').text(data.tcs_lst);
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+    <title>BOSS WEB SOCKET</title>
+</head>
+<body>
+ <p>HB from TCS: <span id="hb"></span></p>   
+ <p>LST from TCS: <span id="lst"></span></p>   
+</body>
+</html>
