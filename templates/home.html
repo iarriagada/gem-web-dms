@@ -5,79 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BOSS WebUI</title>
         <link rel="stylesheet" href="/static/css/styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
         <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
-        <script>
-            function getLST(data) {
-                            $("#lst").text(data.value_lst);
-                        }
-            function getECSPwrStatus(data) {
-                            $("#dome_pwr").css('background-color', data.dome_st);
-                            $("#ts_pwr").css('background-color', data.ts_st);
-                            $("#bs_pwr").css('background-color', data.bs_st);
-                            $("#evg_pwr").css('background-color', data.evg_st);
-                            $("#wvg_pwr").css('background-color', data.wvg_st);
-                        }
-            function getEpicsValsFast() {
-                            $.getJSON({
-                            url: "/epics_fast",
-                            success: function(data) {
-                                            getLST(data);
-                                            getECSPwrStatus(data);
-                                        }
-                                        });
-                        }
-            function getEpicsValsSlow() {
-                            $.getJSON({
-                            url: "/epics_slow",
-                            success: function(data) {
-                                            $("#hb").text(data.value_hb);
-                                        }
-                                        });
-                        }
-            //function getInpValue() {
-            //                var vala = $("#inp1").val();
-            //                $.post('/send_cmds', {"vala":vala});
-            //            }
-            function sendEpicsCmd() {
-                            $("#sendb").click(function() {
-                                            //var vala = $('input[name="a1"]').val();
-                                            var vala = $("#inp1").val();
-                                            //var vala = 666;
-                                            $.ajax({
-                                            type: "POST",
-                                            url: '/send_cmds',
-                                            contentType: 'application/json',
-                                            data:  JSON.stringify({
-                                                  val_a: vala,
-                                                  val_b: 0
-                                                        })
-                                                        });
-                                            //$.post('/send_cmds', {val_a:vala});
-                                        });
-                            $("#az_assrt").focus(function() {
-                                            //var vala = $('input[name="a1"]').val();
-                                            $("#az_assrt").prop("selectedIndex", -1)
-                                        }).change(function() {
-                                            //var vala = $('input[name="a1"]').val();
-                                            var valb = $("#az_assrt").val();
-                                            //var vala = 666;
-                                            $.ajax({
-                                            type: "POST",
-                                            url: '/send_cmds',
-                                            contentType: 'application/json',
-                                            data:  JSON.stringify({
-                                                  val_b: valb
-                                                        })
-                                                        });
-                                            //$.post('/send_cmds', {val_a:vala});
-                                        });
-                        }
-            $(document).ready(function() {
-                            setInterval("getEpicsValsFast()",1000);
-                            setInterval("getEpicsValsSlow()",2000);
-                            sendEpicsCmd();
-                        });
-        </script>
+        <script type="text/javascript" src="{{ url_for('static', filename='page_render.js') }}" charset="utf-8"></script>
     </head>
     <body>
         <header class="banner">
@@ -90,12 +20,12 @@
         <main class="main">
             <div class="left_p">
                 <section class="test_crap">
-                    <p>TCS LST is: <span id="lst">{{ value_lst }}</span></p>
-                    <p>TCS Heartbeat is: <span id="hb">{{ value_hb }}</span></p>
+                    <p>TCS LST is: <span id="lst">{{ data['tcs_lst'] }}</span></p>
+                    <p>TCS Heartbeat is: <span id="hb">{{ data['tcs_hb'] }}</span></p>
                     <p>Enter a number here: <input id="inp1" type="text" name="a1" />
                         <button type="submit" id="sendb">Sum the HB!</button>
                     </p>
-                    <p>This is to see if it updates: {{ test }}</p>
+                    <!--<p>This is to see if it updates: {{ test }}</p>-->
                 </section>
                 <section class="ecs_power">
                     <div class="main__onoff">

@@ -12,11 +12,16 @@ socketio = SocketIO(app)
 os.environ["EPICS_CA_ADDR_LIST"] = "172.17.2.36 172.17.2.31"
 # chan_list = ["tcs:LST",
 chan_dict = {"tcs:heartbeat":'tcs_hb',
-             "tcs:LST":'tcs_lst'}
+             "tcs:LST":'tcs_lst',
+             "ec:tsDriveStat":'ts_st',
+             "ec:bsDriveStat":'bs_st',
+             "ec:evgDriveStat":'evg_st',
+             "ec:wvgDriveStat":'wvg_st',
+             "ec:domeDriveStat":'dome_st'}
 thread = None
 thread_lock = Lock()
 
-# This is are all the endpoint definitions
+# These are all the endpoint/websocket definitions
 @app.route("/")
 def home():
     # test[0] += 1 # Variable to keep track of home page refreshes
@@ -31,40 +36,56 @@ def home():
                            # value_lst=lst_val,
                            # value_hb=hb_val,
                            # test=test[0])
-    return render_template("home_sock.html")
+    # return render_template("home_sock.html", vals_epics)
+    return render_template("home.html", data=vals_epics)
 
+# This is not currently being used
 @socketio.on('connect')
 def send_epics_pvs():
-    pass
+    # # This was implemented in case the epics callbacks couldn't be handled
+    # # directly
     # global thread
     # with thread_lock:
         # if thread is None:
             # thread = socketio.start_background_task(send_vals_thread)
+    pass
 
 @socketio.on('my_event')
 def handle_my_custom_event(json):
     print('received json: ' + str(json))
 
+@app.route("/send_cmds", methods=["GET", "POST"])
+def send_epics_cmds():
+    if request.method == 'POST':
+        # input_a = request.get_json().get('val_a')
+        input_a = request.get_json()
+        print(f"This was sent: {input_a}")
+    return jsonify(i1=input_a)
+
 # Function to trigger channel monitors
 def epics_chan_connect(chan_dict):
     epics_chans = {chan:epics.PV(chan) for chan in chan_dict}
     print(epics_chans.keys())
-    time.sleep(0.5)
+    time.sleep(0.5) # Give it some time for the channels to connect
     for c in epics_chans:
+        # caget one round for the values of all channels.
+        # TODO: Automatic retries
         print(epics_chans[c].value)
     return epics_chans
 
 def mon_epics_chans(epics_chans, vals_epics, chan_dict):
     for c in epics_chans:
         vals_epics[chan_dict[c]] = epics_chans[c].value # Initialize all values
-        epics_chans[c].add_callback(on_change, ch_index=chan_dict, values=vals_epics)
+        # Two dictionaries are passed, one with the Epics channels and the
+        # other with the index between the epics channel name and the key to be
+        # used by the socketio on the client side
+        epics_chans[c].add_callback(on_change,
+                                    ch_index=chan_dict,
+                                    values=vals_epics)
 
 def on_change(pvname=None, value=None, timestamp=None, **kw):
-    # global test
-    # if test[0]:
     kw['values'][kw['ch_index'][pvname]] = value
-        # test[0] = 0
-    socketio.emit('my_response', kw['values'])
+    socketio.emit('val_update', kw['values'])
 
 def send_vals_thread():
     global test
