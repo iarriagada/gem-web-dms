@@ -7,6 +7,7 @@ $("#hb").text(data.tcs_hb);
 }
 
 function setPWRcolor(tag_id, val) {
+    // Set color for ON (green) and OFF (red)
     if (val) {
         $(tag_id).css('background-color', '#00FF00');
     } else {
@@ -22,34 +23,27 @@ function getECSPwrStatus(data) {
     setPWRcolor("#wvg_pwr", data.wvg_st);
 }
 
-function getEpicsValsFast(socket) {
-    socket.on('val_update', function(data) {
+// Function that receives the data updated from the EPICS channels.
+// The channels have been organized in the logical sections of the website
+function getEpicsVals(socket) {
+    socket.on('ecs_update', function(data) {
         getECSPwrStatus(data);
+    });
+    socket.on('test_update', function(data) {
         getLST(data);
         getHB(data);
     });
 }
-function sendEpicsCmd() {
+function sendEpicsCmd(socket) {
+    // Function that sends data from a text input when a button is pressed
     $("#sendb").click(function() {
-        //var vala = $('input[name="a1"]').val();
         var vala = $("#inp1").val();
-        //var vala = 666;
-        $.ajax({
-            type: "POST",
-            url: '/send_cmds',
-            contentType: 'application/json',
-            data:  JSON.stringify({
-                val_a: vala,
-                val_b: 0
-            })
-        });
-        //$.post('/send_cmds', {val_a:vala});
+        socket.emit('my_event', {data: vala, msg: "Yeah!"});
     });
     $("#az_assrt").focus(function() {
         //var vala = $('input[name="a1"]').val();
         $("#az_assrt").prop("selectedIndex", -1)
     }).change(function() {
-        //var vala = $('input[name="a1"]').val();
         var valb = $("#az_assrt").val();
         //var vala = 666;
         $.ajax({
@@ -60,14 +54,16 @@ function sendEpicsCmd() {
                 val_b: valb
             })
         });
-        //$.post('/send_cmds', {val_a:vala});
     });
             }
 $(document).ready(function() {
     var socket = io();
-    getEpicsValsFast(socket);
+    socket.on('connect', function() {
+        socket.emit('connect_event', {state: 'connected'});
+    });
+    getEpicsVals(socket);
     //setInterval("getEpicsValsFast()",1000);
     //setInterval("getEpicsValsSlow()",2000);
-    sendEpicsCmd();
+    sendEpicsCmd(socket);
 });
 
