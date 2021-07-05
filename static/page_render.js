@@ -1,11 +1,3 @@
-function getLST(data) {
-$("#lst").text(data.tcs_lst);
-}
-
-function getHB(data) {
-$("#hb").text(data.tcs_hb);
-}
-
 function setPWRcolor(tag_id, val) {
     // Set color for ON (green) and OFF (red)
     if (val) {
@@ -15,12 +7,49 @@ function setPWRcolor(tag_id, val) {
     }
 }
 
+function getLST(data) {
+$("#lst").text(data.tcs_lst);
+}
+
+function getHB(data) {
+$("#hb").text(data.tcs_hb);
+}
+
 function getECSPwrStatus(data) {
-    setPWRcolor("#dome_pwr", data.dome_st);
-    setPWRcolor("#ts_pwr", data.ts_st);
-    setPWRcolor("#bs_pwr", data.bs_st);
-    setPWRcolor("#evg_pwr", data.evg_st);
-    setPWRcolor("#wvg_pwr", data.wvg_st);
+    setPWRcolor("#dome_pwr", data.dome_pwr);
+    setPWRcolor("#ts_pwr", data.ts_pwr);
+    setPWRcolor("#bs_pwr", data.bs_pwr);
+    setPWRcolor("#evg_pwr", data.evg_pwr);
+    setPWRcolor("#wvg_pwr", data.wvg_pwr);
+}
+
+function getDomeData(data) {
+    $("#dome_state").text(data.dome_st);
+    $("#dome_mess").text(data.dome_mess);
+}
+
+function getShuttersData(data) {
+    $("#ts_state").text(data.ts_st);
+    $("#ts_position").text(data.ts_pos);
+    $("#bs_state").text(data.bs_st);
+    $("#bs_position").text(data.bs_pos);
+    if (data.ac_st) {
+        $("#autoc_state").text("READY");
+        $("#autoc_state").css('color', '#00FF00');
+    } else {
+        $("#autoc_state").text("NOT READY");
+        $("#autoc_state").css('color', '#FF0000');
+    }
+}
+
+function getEVGData(data) {
+    $("#evg_state").text(data.evg_st);
+    $("#evg_position").text(data.evg_pos);
+}
+
+function getWVGData(data) {
+    $("#wvg_state").text(data.wvg_st);
+    $("#wvg_position").text(data.wvg_pos);
 }
 
 // Function that receives the data updated from the EPICS channels.
@@ -28,6 +57,10 @@ function getECSPwrStatus(data) {
 function getEpicsVals(socket) {
     socket.on('ecs_update', function(data) {
         getECSPwrStatus(data);
+        getDomeData(data);
+        getShuttersData(data);
+        getEVGData(data);
+        getWVGData(data);
     });
     socket.on('test_update', function(data) {
         getLST(data);

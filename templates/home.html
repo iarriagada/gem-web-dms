@@ -48,10 +48,33 @@
                 </section>
                 <section class="ecs_svclose">
                     <p>Place holder for Shutters and Vents Table</p>
+                    <p>Shutters</p>
+                    <button class="main__cmd-bttn">CLOSE SHUTTERS</button>
+                    <p>Top Shutter</p>
+                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
+                    <p>State: <span id="ts_state">{{ data['ts_st'] }}</span></p>
+                    <p>Position: <span id="ts_position">{{ data['ts_pos'] }}</span></p>
+                    <p>Bottom Shutter</p>
+                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
+                    <p>State: <span id="bs_state">{{ data['bs_st'] }}</span></p>
+                    <p>Position: <span id="bs_position">{{ data['bs_pos'] }}</span></p>
+                    <p>Auto Close: <span id="autoc_state">{{ data['ac_st'] }}</span></p>
+                    <p>East Vent Gate</p>
+                    <button class="main__cmd-bttn">CLOSE EVG</button>
+                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
+                    <p>State: <span id="evg_state">{{ data['evg_st'] }}</span></p>
+                    <p>Position: <span id="evg_position">{{ data['evg_pos'] }}</span></p>
+                    <p>West Vent Gate</p>
+                    <button class="main__cmd-bttn">CLOSE WVG</button>
+                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
+                    <p>State: <span id="wvg_state">{{ data['wvg_st'] }}</span></p>
+                    <p>Position: <span id="wvg_position">{{ data['wvg_pos'] }}</span></p>
                 </section>
                 <section class="ecs_dpark">
-                        <button class="main__cmd-bttn">PARK</button>
-                        <span class="ecs_dpark__status">STOPPED</span>
+                    <p>Dome</p>
+                    <button class="main__cmd-bttn">PARK</button>
+                    <p>Dome Status: <span id="dome_state">{{ data['dome_st'] }}</span></p>
+                    <p>Action message: <span id="dome_msg">{{ data['dome_mess'] }}</span></p>
                 </section>
             </div>
             <div class="center_p">
