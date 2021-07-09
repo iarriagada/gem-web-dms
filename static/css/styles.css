@@ -62,6 +62,10 @@ button, select{
     border-radius: 10px;
 }
 
+.main__onoff {
+    display: flex;
+}
+
 .main__onoff-on, .main__onoff-off {
     display: inline-block;
     border-width: 0;

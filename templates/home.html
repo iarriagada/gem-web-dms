@@ -30,7 +30,7 @@
                 <section class="ecs_power">
                     <div class="main__onoff">
                         <span class="main__onoff-label">Power</span>
-                            <button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>
+                        <button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>
                     </div>
                     <ul class="section_col">
                         <li class="ecs_mech__status"><span class="indicator" id="dome_pwr"></span> Dome</li>
@@ -80,27 +80,106 @@
             <div class="center_p">
                 <section class="ecs_env">
                     <p>Place holder for ECS Environment</p>
+                    <p>AHU Control</p>
+                    <div class="main__onoff ahu">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on ahu">ON</button><button class="main__onoff-off ahu">OFF</button>
+                        <span class="indicator" id="dome_pwr"></span>
+                    </div>
+                    <p>Enclosure Lights</p>
+                    <div class="main__onoff elights">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on elights">ON</button><button class="main__onoff-off elights">OFF</button>
+                        <span class="indicator" id="dome_pwr"></span>
+                    </div>
+                    <p>Vestibule Lights</p>
+                    <div class="main__onoff vlights">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on vlights">ON</button><button class="main__onoff-off vlights">OFF</button>
+                        <span class="indicator" id="dome_pwr"></span>
+                    </div>
                 </section>
                 <section class="covers_cmd">
                     <p>Place holder for Covers Commands</p>
+                    <p>M1 Cover</p>
+                    <div class="main__onoff m1cover">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on m1cover">OPEN</button><button class="main__onoff-off m1cover">CLOSE</button>
+                        <button class="m1cover__cmd-bttn">STOP</button>
+                        <span class="indicator" id="dome_pwr"></span>
+                    </div>
+                    <ul class="section_col">
+                        <li class="m1cover__status"><span class="indicator" id="dome_pwr"></span> +X</li>
+                        <li class="m1cover__status"><span class="indicator" id="ts_pwr"></span> -X</li>
+                    </ul>
+                    <p>Automatic Recovery Sequence</p>
+                    <p><span id="m1recseq"> Example Step 666 </span></p>
+                    <p>Instrument Cover</p>
+                    <div class="main__onoff instcover">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on instcover">OPEN</button><button class="main__onoff-off instcover">CLOSE</button>
+                        <button class="instcover__cmd-bttn">STOP</button>
+                        <span class="indicator" id="dome_pwr"></span>
+                    </div>
                 </section>
             </div>
             <div class="right_p">
                 <section class="hbs">
                     <p>Place holder for HBS control</p>
+                    <p>HBS Control</p>
+                    <div class="main__onoff hbs">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on hbs">START</button><button class="main__onoff-off hbs">STOP</button>
+                        <!--<button class="hbs__cmd-bttn">STOP</button>-->
+                    </div>
+                    <p>Status: <span class="indicator" id="dome_pwr"></span></p>
+                    <p>Armed: <span class="indicator" id="dome_pwr"></span></p>
+                    <p>Alarm: <span id="hbs_alarm"> No Alarm </span></p>
+                    <p>Flow Rate: <span id="hbs_flow"> 666 </span> [LPM]</p>
+                    <p>HBS Sequence</p>
+                    <p><span id="hbsseq"> Example Step 666 RUN</span></p>
                 </section>
                 <section class="crcs">
                     <p>Place holder for CRCS control</p>
+                    <p>CRCS Control</p>
+                    <div class="main__onoff cr_arm">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on cr_arm">ARM</button><button class="main__onoff-off cr_arm">DISARM</button>
+                        <span class="indicator" id="dome_pwr"></span>
+                        <!--<button class="cr_arm__cmd-bttn">STOP</button>-->
+                    </div>
+                    <div class="main__onoff cr_ass">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on cr_ass">ASSERT</button><button class="main__onoff-off cr_ass">DISASSERT</button>
+                        <span  id="cr_ass_st"> ASSERTED</span>
+                        <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
+                    </div>
                 </section>
                 <section class="mcs">
                     <p>Place holder for MCS control</p>
-                    <div class="assert">
-                        <select class="assert__ddm" id="az_assrt">
-                            <option value="" selected disabled hidden>Select Action</option>
-                            <option value="2">Assert</option>
-                            <option value="1">Disassert</option>
-                        </select>
+                    <p>Azimuth</p>
+                    <div class="main__onoff az_ass">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on az_ass">ASSERT</button><button class="main__onoff-off az_ass">DISASSERT</button>
+                        <span  id="az_ass_st"> ASSERTED</span>
+                        <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
                     </div>
+                    <p>Status: <span id="az_st"> TRACKING</span></p>
+                    <p>Elevation</p>
+                    <div class="main__onoff el_ass">
+                        <!--<span class="ain__onoff-label ahu">Power</span>-->
+                        <button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>
+                        <span  id="el_ass_st"> ASSERTED</span>
+                        <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
+                    </div>
+                    <p>Status: <span id="el_st"> TRACKING</span></p>
+                    <!--<div class="assert">-->
+                        <!--<select class="assert__ddm" id="az_assrt">-->
+                            <!--<option value="" selected disabled hidden>Select Action</option>-->
+                            <!--<option value="2">Assert</option>-->
+                            <!--<option value="1">Disassert</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
                 </section>
             </div>
         </main>
