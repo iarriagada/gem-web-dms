@@ -72,16 +72,28 @@ button, select{
     font: inherit;
     font-size: 0.8em;
     cursor: pointer;
+    transition: 200ms;
 }
 
 .main__onoff-on {
     border-radius: 10px 0 0 10px;
-    background-color: #FFAAAA;
+    background-color: #AAFFAA;
     padding: 2px 10px 2px 10px;
+}
+
+.main__onoff-on:active {
+    background-color:#22FF55;
+    color:#558811;
 }
 
 .main__onoff-off {
     border-radius: 0 10px 10px 0;
-    background-color: #AAFFAA;
+    background-color: #FFAAAA;
     padding: 2px 10px 2px 10px;
 }
+
+.main__onoff-off:active {
+    background-color:#FF001f;
+    color:#ffafaf;
+}
+

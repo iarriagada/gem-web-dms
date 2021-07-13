@@ -68,7 +68,7 @@ def epics_chan_connect(chan_dict):
     for c in epics_chans:
         # caget one round for the values of all channels.
         # TODO: Automatic retries
-        print(epics_chans[c].value)
+        print(f"{c}= {epics_chans[c].value}")
     return epics_chans
 
 def mon_epics_chans(epics_chans, vals_epics, chan_dict):

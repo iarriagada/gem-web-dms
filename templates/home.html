@@ -106,21 +106,21 @@
                         <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on m1cover">OPEN</button><button class="main__onoff-off m1cover">CLOSE</button>
                         <button class="m1cover__cmd-bttn">STOP</button>
-                        <span class="indicator" id="dome_pwr"></span>
                     </div>
+                    <p>Status: <span id="cvr_status">Open</span></p>
                     <ul class="section_col">
-                        <li class="m1cover__status"><span class="indicator" id="dome_pwr"></span> +X</li>
-                        <li class="m1cover__status"><span class="indicator" id="ts_pwr"></span> -X</li>
+                        <li class="m1cover__status"><span class="indicator" id="pxv_state"></span> +X</li>
+                        <li class="m1cover__status"><span class="indicator" id="nxv_state"></span> -X</li>
                     </ul>
                     <p>Automatic Recovery Sequence</p>
-                    <p><span id="m1recseq"> Example Step 666 </span></p>
+                    <p><span id="m1recseq_mess"> Example Step 666 </span></p>
                     <p>Instrument Cover</p>
                     <div class="main__onoff instcover">
                         <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on instcover">OPEN</button><button class="main__onoff-off instcover">CLOSE</button>
                         <button class="instcover__cmd-bttn">STOP</button>
-                        <span class="indicator" id="dome_pwr"></span>
                     </div>
+                    <p>Status: <span id="icvr_status">Open</span></p>
                 </section>
             </div>
             <div class="right_p">
@@ -145,15 +145,16 @@
                     <div class="main__onoff cr_arm">
                         <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on cr_arm">ARM</button><button class="main__onoff-off cr_arm">DISARM</button>
-                        <span class="indicator" id="dome_pwr"></span>
+                        <span class="indicator" id="crarm_state"></span>
                         <!--<button class="cr_arm__cmd-bttn">STOP</button>-->
                     </div>
                     <div class="main__onoff cr_ass">
                         <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on cr_ass">ASSERT</button><button class="main__onoff-off cr_ass">DISASSERT</button>
-                        <span  id="cr_ass_st"> ASSERTED</span>
+                        <span  id="crdrv_state"> ASSERTED</span>
                         <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
                     </div>
+                    <p>Status: <span id="cr_state"> TRACKING</span></p>
                 </section>
                 <section class="mcs">
                     <p>Place holder for MCS control</p>
@@ -161,18 +162,18 @@
                     <div class="main__onoff az_ass">
                         <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on az_ass">ASSERT</button><button class="main__onoff-off az_ass">DISASSERT</button>
-                        <span  id="az_ass_st"> ASSERTED</span>
+                        <span  id="azdrv_state"> ASSERTED</span>
                         <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
                     </div>
-                    <p>Status: <span id="az_st"> TRACKING</span></p>
+                    <p>Status: <span id="az_state"> TRACKING</span></p>
                     <p>Elevation</p>
                     <div class="main__onoff el_ass">
                         <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>
-                        <span  id="el_ass_st"> ASSERTED</span>
+                        <span  id="eldrv_state"> ASSERTED</span>
                         <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
                     </div>
-                    <p>Status: <span id="el_st"> TRACKING</span></p>
+                    <p>Status: <span id="el_state"> TRACKING</span></p>
                     <!--<div class="assert">-->
                         <!--<select class="assert__ddm" id="az_assrt">-->
                             <!--<option value="" selected disabled hidden>Select Action</option>-->

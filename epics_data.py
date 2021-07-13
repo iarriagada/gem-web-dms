@@ -1,4 +1,6 @@
-EPICS_IPS = "172.17.2.36 172.17.2.31"
+# EPICS IOCs IP addresses for EPICS_CA_ADDR_LIST
+EPICS_IPS = "172.17.2.36 172.17.2.31 172.17.2.61 172.17.2.30 172.17.2.32 \
+    172.17.2.33"
 
 # The index dictionary maps the PV record name to the variable used by the JS
 # at the client and also the section name that will be updated
@@ -23,7 +25,19 @@ chan_dict = {
     "ec:domeDriveStat":['dome_pwr', 'ecs_update'],
     "ec:domeState.OMSS":['dome_st', 'ecs_update'],
     "ec:parkDome.MESS":['dome_mess', 'ecs_update'],
-    "ec:lightState":['lights_st', 'ecs_update']
+    "ec:lightState":['lights_st', 'ecs_update'],
+    "mc:azStateS":['az_st', 'mcs_update'],
+    "mc:azDriveCondition":['azdrv_st', 'mcs_update'],
+    "mc:elStateS":['el_st', 'mcs_update'],
+    "mc:elDriveCondition":['eldrv_st', 'mcs_update'],
+    "gis:tsrs:crIsArmed":['crarm_st', 'crcs_update'],
+    "cr:crStateS":['cr_st', 'crcs_update'],
+    "cr:crDriveCondition":['crdrv_st', 'crcs_update'],
+    "gis:mon:other:M1posxVibFlt":['pxvib_st', 'gis_update'],
+    "gis:mon:other:M1negxVibFlt":['nxvib_st', 'gis_update'],
+    "gis:mon:other:M1covVibSeq":['coverseq_st', 'gis_update'],
+    "gis:mon:other:m1coversums.VAL":['cover_st', 'gis_update'],
+    "gis:mon:other:m1instsums.VAL":['instcover_st', 'gis_update'],
 }
 
 
