@@ -6,6 +6,7 @@ html {
 *::after,
 *::before {
     box-sizing: inherit;
+    /*box-sizing: border-box;*/
 }
 
 .banner {
@@ -82,8 +83,8 @@ button, select{
 }
 
 .main__onoff-on:active {
-    background-color:#22FF55;
-    color:#558811;
+    background-color: #22FF55;
+    color: #558811;
 }
 
 .main__onoff-off {
@@ -93,7 +94,65 @@ button, select{
 }
 
 .main__onoff-off:active {
-    background-color:#FF001f;
-    color:#ffafaf;
+    background-color: #FF001f;
+    color: #ffafaf;
 }
 
+button.drive_button {
+    width: 120px;
+    height: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+button.drive_button.assert {
+    background: #00ff00;
+}
+
+button.drive_button,
+button.drive_button .bttn_text,
+button.drive_button .bttn_img {
+    transition: 200ms;
+}
+
+button.drive_button .bttn_text {
+    transform: translateX(0px);
+    width: 80px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.drive_button .bttn_img {
+    position: absolute;
+    height: 25px;
+    width: 40px;
+    transform: translateX(78px);
+    border-left: 1px solid #449944;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*padding: 0px 2px 0px 2px;*/
+}
+
+button.drive_button.assert:hover {
+    background: #66ff66;
+}
+
+button.drive_button.assert:active {
+    box-shadow: 0px 0px 15px #99ff99;
+}
+
+button.drive_button.assert:hover .bttn_text{
+    color: transparent;
+}
+
+button.drive_button:hover .bttn_img{
+    width: 120px;
+    border-left: none;
+    transform: translateX(0);
+}
