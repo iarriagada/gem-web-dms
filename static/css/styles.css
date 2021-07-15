@@ -9,6 +9,10 @@ html {
     /*box-sizing: border-box;*/
 }
 
+/*button {*/
+    /*font: inherit;*/
+/*}*/
+
 .banner {
     display: flex;
     flex-direction: column;
@@ -30,10 +34,18 @@ html {
 
 .center_p {
     width: 33.33%;
+    margin: 0 5px;
 }
 
 .right_p {
     width: 33.33%;
+}
+
+.sys_panel {
+    border-style: solid;
+    border-color: #FFaa00;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .indicator {
@@ -47,6 +59,7 @@ html {
 }
 
 .section_col {
+    list-style-type: none;
     display: flex;
     flex-direction: column;
     padding: 0 0;
@@ -59,9 +72,9 @@ html {
 }
 
 /*.main__onoff-on, .main__onoff-off {*/
-button, select{
-    border-radius: 10px;
-}
+/*button, select{*/
+    /*border-radius: 10px;*/
+/*}*/
 
 .main__onoff {
     display: flex;
@@ -98,18 +111,29 @@ button, select{
     color: #ffafaf;
 }
 
+.drive_ctrl {
+    display: flex;
+    align-items: center;
+}
+
 button.drive_button {
-    width: 120px;
+    font: inherit;
+    width: 140px;
     height: 30px;
     border: none;
     display: flex;
     align-items: center;
     border-radius: 5px;
     padding: 0px;
+    margin: 10px;
 }
 
 button.drive_button.assert {
-    background: #00ff00;
+    background: #22ff22;
+}
+
+button.drive_button.disassert {
+    background: #ffaaaa;
 }
 
 button.drive_button,
@@ -119,24 +143,41 @@ button.drive_button .bttn_img {
 }
 
 button.drive_button .bttn_text {
+    font-size: 0.9em;
+    font-weight: bold;
     transform: translateX(0px);
-    width: 80px;
+    width: 100px;
     height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+button.drive_button.assert .bttn_text {
+    color: #155015;
+}
+
+button.drive_button.disassert .bttn_text {
+    color: #702020;
+}
+
 button.drive_button .bttn_img {
     position: absolute;
     height: 25px;
     width: 40px;
-    transform: translateX(78px);
-    border-left: 1px solid #449944;
+    transform: translateX(98px);
     display: flex;
     align-items: center;
     justify-content: center;
     /*padding: 0px 2px 0px 2px;*/
+}
+
+button.drive_button.assert .bttn_img {
+    border-left: 1px solid #00cc00;
+}
+
+button.drive_button.disassert .bttn_img {
+    border-left: 1px solid #dd6666;
 }
 
 button.drive_button.assert:hover {
@@ -147,12 +188,21 @@ button.drive_button.assert:active {
     box-shadow: 0px 0px 15px #99ff99;
 }
 
-button.drive_button.assert:hover .bttn_text{
+button.drive_button.disassert:hover {
+    background: #ff6666;
+}
+
+button.drive_button.disassert:active {
+    box-shadow: 0px 0px 15px #ff9999;
+}
+
+/*button.drive_button.assert:hover .bttn_text{*/
+button.drive_button:hover .bttn_text{
     color: transparent;
 }
 
 button.drive_button:hover .bttn_img{
-    width: 120px;
+    width: 140px;
     border-left: none;
     transform: translateX(0);
 }

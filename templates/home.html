@@ -19,7 +19,7 @@
         </header>
         <main class="main">
             <div class="left_p">
-                <section class="test_crap">
+                <section class="sys_panel" id="test_crap">
                     <p>TCS LST is: <span id="lst">{{ data['tcs_lst'] }}</span></p>
                     <p>TCS Heartbeat is: <span id="hb">{{ data['tcs_hb'] }}</span></p>
                     <p>Enter a number here: <input id="inp1" type="text" name="a1" />
@@ -27,7 +27,8 @@
                     </p>
                     <!--<p>This is to see if it updates: {{ test }}</p>-->
                 </section>
-                <section class="ecs_power">
+                <section class="sys_panel" id="ecs_power">
+                    <h1 id="ecs_pwr_cmd" class="section_title">ECS Power Control</h1>
                     <div class="main__onoff">
                         <span class="main__onoff-label">Power</span>
                         <button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>
@@ -40,13 +41,13 @@
                         <li class="ecs_mech__status"><span class="indicator" id="wvg_pwr"></span> West Ventgate</li>
                     </ul>
                 </section>
-                <section class="ecs_init">
+                <section class="sys_panel" id="ecs_init">
                     <div class="ecs_init__cmd">
                         <span class="ecs_init__cmd-label">Initialize</span>
                         <button class="ecs_init__cmd-bttn">INIT</button>
                     </div>
                 </section>
-                <section class="ecs_svclose">
+                <section class="sys_panel" id="ecs_svclose">
                     <p>Place holder for Shutters and Vents Table</p>
                     <p>Shutters</p>
                     <button class="main__cmd-bttn">CLOSE SHUTTERS</button>
@@ -70,7 +71,7 @@
                     <p>State: <span id="wvg_state">{{ data['wvg_st'] }}</span></p>
                     <p>Position: <span id="wvg_position">{{ data['wvg_pos'] }}</span></p>
                 </section>
-                <section class="ecs_dpark">
+                <section class="sys_panel" id="ecs_dpark">
                     <p>Dome</p>
                     <button class="main__cmd-bttn">PARK</button>
                     <p>Dome Status: <span id="dome_state">{{ data['dome_st'] }}</span></p>
@@ -78,7 +79,7 @@
                 </section>
             </div>
             <div class="center_p">
-                <section class="ecs_env">
+                <section class="sys_panel" id="ecs_env">
                     <p>Place holder for ECS Environment</p>
                     <p>AHU Control</p>
                     <div class="main__onoff ahu">
@@ -99,7 +100,7 @@
                         <span class="indicator" id="dome_pwr"></span>
                     </div>
                 </section>
-                <section class="covers_cmd">
+                <section class="sys_panel" id="covers_cmd">
                     <p>Place holder for Covers Commands</p>
                     <p>M1 Cover</p>
                     <div class="main__onoff m1cover">
@@ -124,7 +125,7 @@
                 </section>
             </div>
             <div class="right_p">
-                <section class="hbs">
+                <section class="sys_panel" id="hbs">
                     <p>Place holder for HBS control</p>
                     <p>HBS Control</p>
                     <div class="main__onoff hbs">
@@ -139,7 +140,7 @@
                     <p>HBS Sequence</p>
                     <p><span id="hbsseq"> Example Step 666 RUN</span></p>
                 </section>
-                <section class="crcs">
+                <section class="sys_panel" id="crcs">
                     <p>Place holder for CRCS control</p>
                     <p>CRCS Control</p>
                     <div class="main__onoff cr_arm">
@@ -156,7 +157,7 @@
                     </div>
                     <p>Status: <span id="cr_state"> TRACKING</span></p>
                 </section>
-                <section class="mcs">
+                <section class="sys_panel" id="mcs">
                     <p>Place holder for MCS control</p>
                     <p>Azimuth</p>
                     <div class="main__onoff az_ass">
@@ -176,20 +177,22 @@
                     <p>Status: <span id="el_state"> TRACKING</span></p>
                     <!--<div class="assert">-->
                         <!--<select class="assert__ddm" id="az_assrt">-->
-                            <!--<option value="" selected disabled hidden>Select Action</option>-->
+                            <!--<option value="sys_panel" selected disabled hidden>Select Action</option>-->
                             <!--<option value="2">Assert</option>-->
                             <!--<option value="1">Disassert</option>-->
                         <!--</select>-->
                     <!--</div>-->
-                    <button id="ass_bttn" class="drive_button assert">
-                        <div class="bttn_text">ASSERT</div>
-                        <div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>
-                    </button>
-                    <p></p>
-                    <button id="dass_bttn" class="drive_button assert">
-                        <div class="bttn_text">ASSERT</div>
-                        <div class="bttn_img"><img id="dass_icon" src="/static/assert.svg" alt="assert icon"></div>
-                    </button>
+                    <div class="drive_ctrl">
+                        <button id="ass_bttn" class="drive_button assert">
+                            <div class="bttn_text">ASSERT</div>
+                            <div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>
+                        </button>
+                        <!--<p></p>-->
+                        <button id="dass_bttn" class="drive_button disassert">
+                            <div class="bttn_text">DISASSERT</div>
+                            <div class="bttn_img"><img id="dass_icon" src="/static/disassert.svg" alt="assert icon"></div>
+                        </button>
+                    </div>
                 </section>
             </div>
         </main>
