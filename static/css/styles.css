@@ -24,6 +24,7 @@ html {
     flex-direction: row;
     justify-content: center;
     background-color: #474f61;
+    background-image: linear-gradient(0deg, #474f61 0%, #ffaa00 75%);
     color: #cff9f3;
     padding: 15px;
 }
@@ -42,10 +43,23 @@ html {
 }
 
 .sys_panel {
-    border-style: solid;
-    border-color: #FFaa00;
-    border-radius: 5px;
+    /*border-style: solid;*/
+    /*border-color: #FFaa00;*/
+    background-color: #474f61;
+    box-shadow: 0px 5px 15px #000000;
+    border-radius: 10px;
     margin-bottom: 5px;
+    padding: 5px;
+}
+
+.panel_title {
+    margin: 5px 0;
+}
+
+.ecs_pwr_body, .ecs_init {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .indicator {
@@ -115,6 +129,8 @@ html {
     display: flex;
     align-items: center;
 }
+
+/* Start of Assert/Disassert Buttons style specs */
 
 button.drive_button {
     font: inherit;
@@ -197,12 +213,83 @@ button.drive_button.disassert:active {
 }
 
 /*button.drive_button.assert:hover .bttn_text{*/
-button.drive_button:hover .bttn_text{
+button.drive_button:hover .bttn_text {
     color: transparent;
 }
 
-button.drive_button:hover .bttn_img{
+button.drive_button:hover .bttn_img {
     width: 140px;
     border-left: none;
     transform: translateX(0);
+}
+
+.center-con {
+    display: flex;
+    /*background: #ddffcc;*/
+    height: 31px;
+    width: inherit;
+}
+
+.round {
+    position: relative;
+    background: #ddffcc;
+    border: 2px solid #449944;
+    height: 25px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#cta {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.arrow {
+    position: absolute;
+    background-size: cover;
+    width: 12px;
+    height: 20px;
+    transform: translateX(40px);
+}
+
+.target {
+    background-image: url('../TARGET.svg');
+    position: absolute;
+    background-size: cover;
+    width: 22px;
+    height: 25px;
+    transform: translateX(60px);
+}
+
+.segunda {
+    margin-left: 8px;
+}
+
+.next {
+    background-image: url('../MOVE.svg');
+}
+
+@keyframes bounceAlpha {
+  0% {opacity: 1; transform: translateX(40px) scale(1);}
+  25%{opacity: 0; transform: translateX(50px) scale(0.9);}
+  26%{opacity: 0; transform: translateX(30px) scale(0.9);}
+  55% {opacity: 1; transform: translateX(40px) scale(1);}
+}
+
+.bounceAlpha {
+    animation-name: bounceAlpha;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.primera.bounceAlpha {
+    animation-name: bounceAlpha;
+    animation-duration: 1.4s;
+    animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }

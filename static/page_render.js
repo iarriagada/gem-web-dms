@@ -22,7 +22,7 @@ function setAssState(tag_id, val) {
             $(tag_id).text('Fault (LOW)');
             break;
         default:
-            $(tag_id).text('Mi no entender');
+            $(tag_id).text('Me no entender');
     }
 }
 
@@ -41,7 +41,7 @@ function setSeqMess(tag_id, val) {
             $(tag_id).text('323-VFD Tripped');
             break;
         default:
-            $(tag_id).text('Mi no entender');
+            $(tag_id).text('Me no entender');
     }
 }
 
@@ -90,6 +90,11 @@ function getWVGData(data) {
     $("#wvg_position").text(data.wvg_pos);
 }
 
+function getEnvironData(data) {
+    setPWRcolor("#elights_state", data.elights_st);
+    setPWRcolor("#vlights_state", data.vlights_st);
+}
+
 function getMCSData(data) {
     setAssState("#azdrv_state", data.azdrv_st);
     setAssState("#eldrv_state", data.eldrv_st);
@@ -133,6 +138,9 @@ function getEpicsVals(socket) {
         getLST(data);
         getHB(data);
     });
+    socket.on('env_update', function(data) {
+        getEnvironData(data);
+    });
     socket.on('mcs_update', function(data) {
         getMCSData(data);
     });
@@ -148,23 +156,27 @@ function sendEpicsCmd(socket) {
     $("#sendb").click(function() {
         var vala = $("#inp1").val();
         socket.emit('my_event', {data: vala, msg: "Yeah!"});
+        //$("#x3").css('width', '0px');
+        $("#x3").css('background-image', 'url("/static/ON-B.svg")');
+        $("#x1").toggleClass("bounceAlpha");
+        $("#x2").toggleClass("bounceAlpha");
     });
-    $("#az_assrt").focus(function() {
-        //var vala = $('input[name="a1"]').val();
-        $("#az_assrt").prop("selectedIndex", -1)
-    }).change(function() {
-        var valb = $("#az_assrt").val();
-        //var vala = 666;
-        $.ajax({
-            type: "POST",
-            url: '/send_cmds',
-            contentType: 'application/json',
-            data:  JSON.stringify({
-                val_b: valb
-            })
-        });
-    });
-            }
+    //$("#az_assrt").focus(function() {
+        ////var vala = $('input[name="a1"]').val();
+        //$("#az_assrt").prop("selectedIndex", -1)
+    //}).change(function() {
+        //var valb = $("#az_assrt").val();
+        ////var vala = 666;
+        //$.ajax({
+            //type: "POST",
+            //url: '/send_cmds',
+            //contentType: 'application/json',
+            //data:  JSON.stringify({
+                //val_b: valb
+            //})
+        //});
+    //});
+}
 $(document).ready(function() {
     var socket = io();
     socket.on('connect', function() {
