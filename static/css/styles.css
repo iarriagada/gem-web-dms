@@ -5,8 +5,8 @@ html {
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
-    /*box-sizing: border-box;*/
+    /*box-sizing: inherit;*/
+    box-sizing: border-box;
 }
 
 /*button {*/
@@ -223,31 +223,41 @@ button.drive_button:hover .bttn_img {
     transform: translateX(0);
 }
 
-.center-con {
+.status {
     display: flex;
-    /*background: #ddffcc;*/
-    height: 31px;
-    width: inherit;
+    height: 40px;
+    /*width: 300px;*/
+    width: fit-content;
 }
 
-.round {
+.status__bg {
     position: relative;
-    background: #ddffcc;
-    border: 2px solid #449944;
-    height: 25px;
-    width: 100%;
-    border-radius: 20px;
-}
-
-#cta {
     display: flex;
     align-items: center;
-    position: absolute;
+    background: #ddffcc;
+    border: 2px solid #449944;
+    height: 100%;
     width: 100%;
+    border-radius: 20px;
+    padding: 0px 20px;
+}
+
+.status_text {
+    color: rgb(10,100,10,0.75);
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.status__ico {
+    display: flex;
+    align-items: center;
+    /*position: absolute;*/
+    /*width: 100%;*/
+    width: 80px;
     height: 100%;
 }
 
-.arrow {
+.status__arrow {
     position: absolute;
     background-size: cover;
     width: 12px;
@@ -255,7 +265,7 @@ button.drive_button:hover .bttn_img {
     transform: translateX(40px);
 }
 
-.target {
+.status__target {
     background-image: url('../TARGET.svg');
     position: absolute;
     background-size: cover;
@@ -264,11 +274,11 @@ button.drive_button:hover .bttn_img {
     transform: translateX(60px);
 }
 
-.segunda {
+.second {
     margin-left: 8px;
 }
 
-.next {
+.arrw_img {
     background-image: url('../MOVE.svg');
 }
 
@@ -286,7 +296,7 @@ button.drive_button:hover .bttn_img {
     animation-timing-function:linear;
 }
 
-.primera.bounceAlpha {
+.first.bounceAlpha {
     animation-name: bounceAlpha;
     animation-duration: 1.4s;
     animation-delay: 0.2s;
