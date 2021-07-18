@@ -96,9 +96,9 @@ function getEnvironData(data) {
 }
 
 function getMCSData(data) {
-    setAssState("#azdrv_state", data.azdrv_st);
+    setAssState("#azdrvst_txt", data.azdrv_st);
     setAssState("#eldrv_state", data.eldrv_st);
-    $("#az_state").text(data.az_st);
+    $("#azmotnst_txt").text(data.az_st);
     $("#el_state").text(data.el_st);
 }
 

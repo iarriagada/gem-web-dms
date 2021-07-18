@@ -30,6 +30,7 @@
                     </p>
                     <!--<p>This is to see if it updates: {{ test }}</p>-->
                 </section>
+                <!--ecs motors section-->
                 <section class="sys_panel" id="ecs_power">
                     <h1 id="ecs_pwr_title" class="panel_title">ECS Power Control</h1>
                     <div class="sys_subpanel ecs_init">
@@ -52,33 +53,24 @@
                         </ul>
                     </div>
                 </section>
-                <!--<section class="sys_panel" id="ecs_init">-->
-                    <!--<div class="ecs_init__cmd">-->
-                        <!--<span class="ecs_init__cmd-label">Initialize</span>-->
-                        <!--<button class="ecs_init__cmd-bttn">INIT</button>-->
-                    <!--</div>-->
-                <!--</section>-->
+                <!--ecs movement control section-->
                 <section class="sys_panel" id="ecs_svclose">
                     <p>Place holder for Shutters and Vents Table</p>
                     <p>Shutters</p>
                     <button class="main__cmd-bttn">CLOSE SHUTTERS</button>
                     <p>Top Shutter</p>
-                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
                     <p>State: <span id="ts_state">{{ data['ts_st'] }}</span></p>
                     <p>Position: <span id="ts_position">{{ data['ts_pos'] }}</span></p>
                     <p>Bottom Shutter</p>
-                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
                     <p>State: <span id="bs_state">{{ data['bs_st'] }}</span></p>
                     <p>Position: <span id="bs_position">{{ data['bs_pos'] }}</span></p>
                     <p>Auto Close: <span id="autoc_state">{{ data['ac_st'] }}</span></p>
                     <p>East Vent Gate</p>
                     <button class="main__cmd-bttn">CLOSE EVG</button>
-                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
                     <p>State: <span id="evg_state">{{ data['evg_st'] }}</span></p>
                     <p>Position: <span id="evg_position">{{ data['evg_pos'] }}</span></p>
                     <p>West Vent Gate</p>
                     <button class="main__cmd-bttn">CLOSE WVG</button>
-                    <!--<p>State: <span class="ecs_ts__state" id="ts_state">STOPPED</span></p>-->
                     <p>State: <span id="wvg_state">{{ data['wvg_st'] }}</span></p>
                     <p>Position: <span id="wvg_position">{{ data['wvg_pos'] }}</span></p>
                 </section>
@@ -89,24 +81,22 @@
                     <p>Action message: <span id="dome_msg">{{ data['dome_mess'] }}</span></p>
                 </section>
             </div>
+            <!--center panel-->
             <div class="center_p">
                 <section class="sys_panel" id="ecs_env">
                     <p>Place holder for ECS Environment</p>
                     <p>AHU Control</p>
                     <div class="main__onoff ahu">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on ahu">ON</button><button class="main__onoff-off ahu">OFF</button>
                         <span class="indicator" id="dome_pwr"></span>
                     </div>
                     <p>Enclosure Lights</p>
                     <div class="main__onoff elights">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on elights">ON</button><button class="main__onoff-off elights">OFF</button>
                         <span class="indicator" id="elights_state"></span>
                     </div>
                     <p>Vestibule Lights</p>
                     <div class="main__onoff vlights">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on vlights">ON</button><button class="main__onoff-off vlights">OFF</button>
                         <span class="indicator" id="vlights_state"></span>
                     </div>
@@ -115,7 +105,6 @@
                     <p>Place holder for Covers Commands</p>
                     <p>M1 Cover</p>
                     <div class="main__onoff m1cover">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on m1cover">OPEN</button><button class="main__onoff-off m1cover">CLOSE</button>
                         <button class="m1cover__cmd-bttn">STOP</button>
                     </div>
@@ -128,7 +117,6 @@
                     <p><span id="m1recseq_mess"> Example Step 666 </span></p>
                     <p>Instrument Cover</p>
                     <div class="main__onoff instcover">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on instcover">OPEN</button><button class="main__onoff-off instcover">CLOSE</button>
                         <button class="instcover__cmd-bttn">STOP</button>
                     </div>
@@ -140,9 +128,7 @@
                     <p>Place holder for HBS control</p>
                     <p>HBS Control</p>
                     <div class="main__onoff hbs">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on hbs">START</button><button class="main__onoff-off hbs">STOP</button>
-                        <!--<button class="hbs__cmd-bttn">STOP</button>-->
                     </div>
                     <p>Status: <span class="indicator" id="dome_pwr"></span></p>
                     <p>Armed: <span class="indicator" id="dome_pwr"></span></p>
@@ -155,44 +141,70 @@
                     <p>Place holder for CRCS control</p>
                     <p>CRCS Control</p>
                     <div class="main__onoff cr_arm">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on cr_arm">ARM</button><button class="main__onoff-off cr_arm">DISARM</button>
                         <span class="indicator" id="crarm_state"></span>
-                        <!--<button class="cr_arm__cmd-bttn">STOP</button>-->
                     </div>
                     <div class="main__onoff cr_ass">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
                         <button class="main__onoff-on cr_ass">ASSERT</button><button class="main__onoff-off cr_ass">DISASSERT</button>
                         <span  id="crdrv_state"> ASSERTED</span>
-                        <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
                     </div>
                     <p>Status: <span id="cr_state"> TRACKING</span></p>
                 </section>
                 <section class="sys_panel" id="mcs">
                     <p>Place holder for MCS control</p>
-                    <p>Azimuth</p>
-                    <div class="main__onoff az_ass">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
-                        <button class="main__onoff-on az_ass">ASSERT</button><button class="main__onoff-off az_ass">DISASSERT</button>
-                        <span  id="azdrv_state"> ASSERTED</span>
-                        <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
-                    </div>
-                    <p>Status: <span id="az_state"> TRACKING</span></p>
-                    <p>Elevation</p>
-                    <div class="main__onoff el_ass">
-                        <!--<span class="ain__onoff-label ahu">Power</span>-->
-                        <button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>
-                        <span  id="eldrv_state"> ASSERTED</span>
-                        <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
-                    </div>
-                    <p>Status: <span id="el_state"> TRACKING</span></p>
-                    <!--<div class="assert">-->
-                        <!--<select class="assert__ddm" id="az_assrt">-->
-                            <!--<option value="sys_panel" selected disabled hidden>Select Action</option>-->
-                            <!--<option value="2">Assert</option>-->
-                            <!--<option value="1">Disassert</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
+                    <section class="sys_subpanel mcs_az" id="mcs_az_pnl">
+                        <div id="azimuth_l" class="axis_ctrl left">
+                            <p class="axis_lbl">Azimuth</p>
+                        </div>
+                        <!--<div class="main__onoff az_ass">-->
+                            <!--<span class="ain__onoff-label ahu">Power</span>-->
+                            <!--<button class="main__onoff-on az_ass">ASSERT</button><button class="main__onoff-off az_ass">DISASSERT</button>-->
+                        <!--</div>-->
+                        <div id="azimuth_r" class="axis_ctrl right">
+                            <div class="drive_ctrl">
+                                <button id="ass_bttn" class="drive_button assert">
+                                    <div class="bttn_text">ASSERT</div>
+                                    <div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>
+                                </button>
+                                <button id="dass_bttn" class="drive_button disassert">
+                                    <div class="bttn_text">DISASSERT</div>
+                                    <div class="bttn_img"><img id="dass_icon" src="/static/disassert.svg" alt="assert icon"></div>
+                                </button>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="azdrv_state">
+                                    <div class="status_text" id="azdrvst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="azdrvst_ico">
+                                        <span class="status__arrow first arrw_img " id="azdrvst_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="azdrvst_a2"></span>
+                                        <span class="status__target" id="azdrvst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="azmotn_state">
+                                    <div class="status_text" id="azmotnst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="azmotnst_ico">
+                                        <span class="status__arrow first arrw_img " id="azmotnst_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="azmotnst_a2"></span>
+                                        <span class="status__target" id="azmotnst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<span  id="azdrv_state"> ASSERTED</span>-->
+                        <!--<p>Status: <span id="az_state"> TRACKING</span></p>-->
+                    </section>
+                    <section class="sys_subpanel" id="mcs_el">
+                        <p>Elevation</p>
+                        <div class="main__onoff el_ass">
+                            <!--<span class="ain__onoff-label ahu">Power</span>-->
+                            <button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>
+                            <span  id="eldrv_state"> ASSERTED</span>
+                            <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
+                        </div>
+                        <p>Status: <span id="el_state"> TRACKING</span></p>
+                    </section>
                     <div class="drive_ctrl">
                         <button id="ass_bttn" class="drive_button assert">
                             <div class="bttn_text">ASSERT</div>

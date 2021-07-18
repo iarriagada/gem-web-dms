@@ -56,10 +56,16 @@ html {
     margin: 5px 0;
 }
 
-.ecs_pwr_body, .ecs_init {
+.ecs_pwr_body, .ecs_init, .mcs_az {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.axis_ctrl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .indicator {
@@ -128,6 +134,7 @@ html {
 .drive_ctrl {
     display: flex;
     align-items: center;
+    margin: 5px 0px;
 }
 
 /* Start of Assert/Disassert Buttons style specs */
@@ -141,15 +148,17 @@ button.drive_button {
     align-items: center;
     border-radius: 5px;
     padding: 0px;
-    margin: 10px;
+    /*margin: 10px;*/
 }
 
 button.drive_button.assert {
     background: #22ff22;
+    margin-right: 3px;
 }
 
 button.drive_button.disassert {
     background: #ffaaaa;
+    margin-left: 3px;
 }
 
 button.drive_button,
@@ -223,11 +232,12 @@ button.drive_button:hover .bttn_img {
     transform: translateX(0);
 }
 
-.status {
+.status_banner {
     display: flex;
     height: 40px;
     /*width: 300px;*/
     width: fit-content;
+    margin: 5px 0px;
 }
 
 .status__bg {
@@ -237,7 +247,7 @@ button.drive_button:hover .bttn_img {
     background: #ddffcc;
     border: 2px solid #449944;
     height: 100%;
-    width: 100%;
+    width: fit-content;
     border-radius: 20px;
     padding: 0px 20px;
 }
@@ -253,29 +263,35 @@ button.drive_button:hover .bttn_img {
     align-items: center;
     /*position: absolute;*/
     /*width: 100%;*/
-    width: 80px;
+    width: 40px;
     height: 100%;
+    margin-left: 20px;
 }
 
 .status__arrow {
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     background-size: cover;
     width: 12px;
     height: 20px;
-    transform: translateX(40px);
-}
-
-.status__target {
-    background-image: url('../TARGET.svg');
-    position: absolute;
-    background-size: cover;
-    width: 22px;
-    height: 25px;
-    transform: translateX(60px);
+    transform: translateX(0px);
 }
 
 .second {
-    margin-left: 8px;
+    position: absolute;
+    margin-left: 6px;
+    transform: translateX(0px);
+}
+
+.status__target {
+    display: block;
+    background-image: url('../TARGET.svg');
+    /*position: absolute;*/
+    position: relative;
+    background-size: cover;
+    width: 24px;
+    height: 22px;
+    transform: translateX(5px);
 }
 
 .arrw_img {
@@ -283,10 +299,10 @@ button.drive_button:hover .bttn_img {
 }
 
 @keyframes bounceAlpha {
-  0% {opacity: 1; transform: translateX(40px) scale(1);}
-  25%{opacity: 0; transform: translateX(50px) scale(0.9);}
-  26%{opacity: 0; transform: translateX(30px) scale(0.9);}
-  55% {opacity: 1; transform: translateX(40px) scale(1);}
+  0% {opacity: 1; transform: translateX(0px) scale(1);}
+  25%{opacity: 0; transform: translateX(10px) scale(0.9);}
+  26%{opacity: 0; transform: translateX(-10px) scale(0.9);}
+  55% {opacity: 1; transform: translateX(0px) scale(1);}
 }
 
 .bounceAlpha {
