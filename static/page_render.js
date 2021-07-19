@@ -7,18 +7,18 @@ function setPWRcolor(tag_id, val) {
     }
 }
 
-function setAssState(tag_id, stban_id, icon_id, val) {
+function setDrvState(tag_id, stban_id, icon_id, val) {
     switch(val) {
         case 0:
             $(tag_id).text('Fault (HIGH)');
             break;
         case 1:
             $(tag_id).text('DISASSERTED');
-            $(stban_id).css('background', '#0000ff');
-            $(stban_id).css('border-color', '#ff8080');
-            $(stban_id).css('color', '#ff8080');
-            break;
+            $(stban_id).css('background', '#0000cc');
+            $(stban_id).css('border-color', '#ff7575');
+            $(stban_id).css('color', '#ff7575');
             $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
+            break;
         case 2:
             $(tag_id).text('ASSERTED');
             $(stban_id).css('background', '#008800');
@@ -31,6 +31,44 @@ function setAssState(tag_id, stban_id, icon_id, val) {
             break;
         default:
             $(tag_id).text('Me no entender');
+    }
+}
+
+function setMotionState(txt_id, stban_id, arrw1_id, arrw2_id, icon_id, val) {
+    switch(val) {
+        case "TRACKING":
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#e5ffc2');
+            $(stban_id).css('border-color', '#008f00');
+            $(stban_id).css('color', '#008f00');
+            $(arrw1_id).addClass('bounceAlpha');
+            $(arrw2_id).addClass('bounceAlpha');
+            break;
+        case "SLEWING":
+            $(txt_id).text('DISASSERTED');
+            $(stban_id).css('background', '#0000ff');
+            $(stban_id).css('border-color', '#ff8080');
+            $(stban_id).css('color', '#ff8080');
+            $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
+            break;
+        case "STATIONARY":
+            $(txt_id).text('ASSERTED');
+            $(stban_id).css('background', '#008800');
+            $(stban_id).css('border-color', '#ffff00');
+            $(stban_id).css('color', '#ffff00');
+            $(icon_id).css('background-image', 'url("/static/ASSERTED.svg")');
+            break;
+        case "BRAKED":
+            $(txt_id).text('Fault (LOW)');
+            break;
+        case "APPLY BRAKES":
+            $(txt_id).text('Fault (LOW)');
+            break;
+        case "RELEASE BRAKES":
+            $(txt_id).text('Fault (LOW)');
+            break;
+        default:
+            $(txt_id).text('Me no entender');
     }
 }
 
@@ -104,14 +142,16 @@ function getEnvironData(data) {
 }
 
 function getMCSData(data) {
-    setAssState("#azdrvst_txt", "#azdrv_state", "#azdrvst_tgt", data.azdrv_st);
-    setAssState("#eldrvst_txt", "#eldrv_state", "#eldrvst_tgt", data.eldrv_st);
-    $("#azmotnst_txt").text(data.az_st);
-    $("#elmotnst_txt").text(data.el_st);
+    setDrvState("#azdrvst_txt", "#azdrv_state", "#azdrvst_tgt", data.azdrv_st);
+    setDrvState("#eldrvst_txt", "#eldrv_state", "#eldrvst_tgt", data.eldrv_st);
+    setMotionState("#azmotnst_txt", "#azmotn_state", "#azmotn_a1", "#azmotn_a2", "#azmotnst_tgt", data.az_st);
+    //$("#azmotnst_txt").text(data.az_st);
+    setMotionState("#elmotnst_txt", "#elmotn_state", "#elmotn_a1", "#elmotn_a2", "#elmotnst_tgt", data.el_st);
+    //$("#elmotnst_txt").text(data.el_st);
 }
 
 function getCRCSData(data) {
-    setAssState("#crdrv_state", data.crdrv_st);
+    setDrvState("#crdrv_state", data.crdrv_st);
     $("#cr_state").text(data.cr_st);
     setPWRcolor("#crarm_state", data.crarm_st);
 }

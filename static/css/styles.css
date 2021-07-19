@@ -335,6 +335,8 @@ button.drive_button:hover .bttn_img {
 
 .status__target.motion_st {
     background-image: url('../TARGET.svg');
+    width: 24px;
+    height: 27px;
 }
 
 .arrw_img {
@@ -361,4 +363,12 @@ button.drive_button:hover .bttn_img {
     animation-delay: 0.2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+#x1 {
+    background-image: url('../BRAKE-L.svg');
+}
+
+#x2 {
+    background-image: url('../BRAKE-R.svg');
 }
