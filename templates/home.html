@@ -151,33 +151,30 @@
                     <p>Status: <span id="cr_state"> TRACKING</span></p>
                 </section>
                 <section class="sys_panel" id="mcs">
-                    <p>Place holder for MCS control</p>
-                    <section class="sys_subpanel mcs_az" id="mcs_az_pnl">
+                    <h1 id="mcs_ctrl_title" class="panel_title">MCS Control</h1>
+                    <!--<p>Place holder for MCS control</p>-->
+                    <section class="sys_subpanel mcs_sp" id="mcs_az_pnl">
                         <div id="azimuth_l" class="axis_ctrl left">
                             <p class="axis_lbl">Azimuth</p>
                         </div>
-                        <!--<div class="main__onoff az_ass">-->
-                            <!--<span class="ain__onoff-label ahu">Power</span>-->
-                            <!--<button class="main__onoff-on az_ass">ASSERT</button><button class="main__onoff-off az_ass">DISASSERT</button>-->
-                        <!--</div>-->
                         <div id="azimuth_r" class="axis_ctrl right">
                             <div class="drive_ctrl">
                                 <button id="ass_bttn" class="drive_button assert">
                                     <div class="bttn_text">ASSERT</div>
-                                    <div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>
+                                    <div class="bttn_img"><img id="ass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
                                 </button>
                                 <button id="dass_bttn" class="drive_button disassert">
                                     <div class="bttn_text">DISASSERT</div>
-                                    <div class="bttn_img"><img id="dass_icon" src="/static/disassert.svg" alt="assert icon"></div>
+                                    <div class="bttn_img"><img id="dass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
                                 </button>
                             </div>
                             <div class="status_banner">
                                 <div class="status__bg" id="azdrv_state">
                                     <div class="status_text" id="azdrvst_txt">RELEASE BRAKES</div>
                                     <div class="status__ico" id="azdrvst_ico">
-                                        <span class="status__arrow first arrw_img " id="azdrvst_a1"></span>
-                                        <span class="status__arrow second arrw_img " id="azdrvst_a2"></span>
-                                        <span class="status__target" id="azdrvst_tgt"></span>
+                                        <!--<span class="status__arrow first arrw_img " id="azdrvst_a1"></span>-->
+                                        <!--<span class="status__arrow second arrw_img " id="azdrvst_a2"></span>-->
+                                        <span class="status__target drive_st" id="azdrvst_tgt"></span>
                                     </div>
                                 </div>
                             </div>
@@ -187,46 +184,79 @@
                                     <div class="status__ico" id="azmotnst_ico">
                                         <span class="status__arrow first arrw_img " id="azmotnst_a1"></span>
                                         <span class="status__arrow second arrw_img " id="azmotnst_a2"></span>
-                                        <span class="status__target" id="azmotnst_tgt"></span>
+                                        <span class="status__target motion_st" id="azmotnst_tgt"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--<span  id="azdrv_state"> ASSERTED</span>-->
-                        <!--<p>Status: <span id="az_state"> TRACKING</span></p>-->
                     </section>
-                    <section class="sys_subpanel" id="mcs_el">
-                        <p>Elevation</p>
-                        <div class="main__onoff el_ass">
-                            <!--<span class="ain__onoff-label ahu">Power</span>-->
-                            <button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>
-                            <span  id="eldrv_state"> ASSERTED</span>
-                            <!--<button class="cr_ass__cmd-bttn">STOP</button>-->
+                    <section class="sys_subpanel mcs_sp" id="mcs_el_pnl">
+                        <div id="elevation_l" class="axis_ctrl left">
+                            <p class="axis_lbl">Elevation</p>
                         </div>
-                        <p>Status: <span id="el_state"> TRACKING</span></p>
-                    </section>
-                    <div class="drive_ctrl">
-                        <button id="ass_bttn" class="drive_button assert">
-                            <div class="bttn_text">ASSERT</div>
-                            <div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>
-                        </button>
-                        <!--<p></p>-->
-                        <button id="dass_bttn" class="drive_button disassert">
-                            <div class="bttn_text">DISASSERT</div>
-                            <div class="bttn_img"><img id="dass_icon" src="/static/disassert.svg" alt="assert icon"></div>
-                        </button>
-                    </div>
-                    <p></p>
-                    <div class="status">
-                        <div class="status__bg" id="t1">
-                            <div class="status_text">RELEASE BRAKES</div>
-                            <div class="status__ico">
-                                <span class="status__arrow first arrw_img " id="x1"></span>
-                                <span class="status__arrow second arrw_img " id="x2"></span>
-                                <span class="status__target" id="x3"></span>
+                        <div id="elevation_r" class="axis_ctrl right">
+                            <div class="drive_ctrl">
+                                <button id="ass_bttn" class="drive_button assert">
+                                    <div class="bttn_text">ASSERT</div>
+                                    <div class="bttn_img"><img id="ass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
+                                </button>
+                                <button id="dass_bttn" class="drive_button disassert">
+                                    <div class="bttn_text">DISASSERT</div>
+                                    <div class="bttn_img"><img id="dass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
+                                </button>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="eldrv_state">
+                                    <div class="status_text" id="eldrvst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="eldrvst_ico">
+                                        <!--<span class="status__arrow first arrw_img " id="eldrvst_a1"></span>-->
+                                        <!--<span class="status__arrow second arrw_img " id="eldrvst_a2"></span>-->
+                                        <span class="status__target drive_st" id="eldrvst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="elmotn_state">
+                                    <div class="status_text" id="elmotnst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="elmotnst_ico">
+                                        <span class="status__arrow first arrw_img " id="elmotnst_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="elmotnst_a2"></span>
+                                        <span class="status__target motion_st" id="elmotnst_tgt"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <!--<p>Elevation</p>-->
+                        <!--<div class="main__onoff el_ass">-->
+                            <!--[><span class="ain__onoff-label ahu">Power</span><]-->
+                            <!--<button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>-->
+                            <!--<span  id="eldrv_state"> ASSERTED</span>-->
+                            <!--[><button class="cr_ass__cmd-bttn">STOP</button><]-->
+                        <!--</div>-->
+                        <!--<p>Status: <span id="el_state"> TRACKING</span></p>-->
+                    <!--</section>-->
+                    <!--<div class="drive_ctrl">-->
+                        <!--<button id="ass_bttn" class="drive_button assert">-->
+                            <!--<div class="bttn_text">ASSERT</div>-->
+                            <!--<div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>-->
+                        <!--</button>-->
+                        <!--[><p></p><]-->
+                        <!--<button id="dass_bttn" class="drive_button disassert">-->
+                            <!--<div class="bttn_text">DISASSERT</div>-->
+                            <!--<div class="bttn_img"><img id="dass_icon" src="/static/disassert.svg" alt="assert icon"></div>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <!--<p></p>-->
+                    <!--<div class="status">-->
+                        <!--<div class="status__bg" id="t1">-->
+                            <!--<div class="status_text">RELEASE BRAKES</div>-->
+                            <!--<div class="status__ico">-->
+                                <!--<span class="status__arrow first arrw_img " id="x1"></span>-->
+                                <!--<span class="status__arrow second arrw_img " id="x2"></span>-->
+                                <!--<span class="status__target" id="x3"></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </section>
             </div>
         </main>

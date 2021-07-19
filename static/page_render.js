@@ -7,16 +7,24 @@ function setPWRcolor(tag_id, val) {
     }
 }
 
-function setAssState(tag_id, val) {
+function setAssState(tag_id, stban_id, icon_id, val) {
     switch(val) {
         case 0:
             $(tag_id).text('Fault (HIGH)');
             break;
         case 1:
             $(tag_id).text('DISASSERTED');
+            $(stban_id).css('background', '#0000ff');
+            $(stban_id).css('border-color', '#ff8080');
+            $(stban_id).css('color', '#ff8080');
             break;
+            $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
         case 2:
             $(tag_id).text('ASSERTED');
+            $(stban_id).css('background', '#008800');
+            $(stban_id).css('border-color', '#ffff00');
+            $(stban_id).css('color', '#ffff00');
+            $(icon_id).css('background-image', 'url("/static/ASSERTED.svg")');
             break;
         case 3:
             $(tag_id).text('Fault (LOW)');
@@ -96,10 +104,10 @@ function getEnvironData(data) {
 }
 
 function getMCSData(data) {
-    setAssState("#azdrvst_txt", data.azdrv_st);
-    setAssState("#eldrv_state", data.eldrv_st);
+    setAssState("#azdrvst_txt", "#azdrv_state", "#azdrvst_tgt", data.azdrv_st);
+    setAssState("#eldrvst_txt", "#eldrv_state", "#eldrvst_tgt", data.eldrv_st);
     $("#azmotnst_txt").text(data.az_st);
-    $("#el_state").text(data.el_st);
+    $("#elmotnst_txt").text(data.el_st);
 }
 
 function getCRCSData(data) {

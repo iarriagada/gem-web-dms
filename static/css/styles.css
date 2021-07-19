@@ -57,10 +57,18 @@ html {
     margin: 5px 0;
 }
 
-.ecs_pwr_body, .ecs_init, .mcs_az {
+.ecs_pwr_body, .ecs_init, .mcs_sp {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.mcs_sp#mcs_az_pnl {
+    margin: 5px 0 15px 0;
+}
+
+.mcs_sp#mcs_el_pnl {
+    margin: 15px 0 5px 0;
 }
 
 .axis_ctrl {
@@ -264,7 +272,9 @@ button.drive_button:hover .bttn_img {
     display: flex;
     align-items: center;
     background: #ddffcc;
-    border: 2px solid #449944;
+    border: 2px solid;
+    border-color: #449944;
+    color: rgb(10,100,10,0.75);
     height: 100%;
     /*width: fit-content;*/
     width: 100%;
@@ -276,7 +286,7 @@ button.drive_button:hover .bttn_img {
     display: flex;
     justify-content: center;
     flex: 0 0 80%;
-    color: rgb(10,100,10,0.75);
+    /*color: rgb(10,100,10,0.75);*/
     font-family: Lato;
     font-weight: bold;
 }
@@ -309,13 +319,22 @@ button.drive_button:hover .bttn_img {
 
 .status__target {
     display: block;
-    background-image: url('../TARGET.svg');
     /*position: absolute;*/
     position: relative;
     background-size: cover;
-    width: 24px;
-    height: 22px;
+    /*width: 24px;*/
+    /*height: 22px;*/
     transform: translateX(5px);
+}
+
+.status__target.drive_st {
+    background-image: url('../ASSERTED.svg');
+    width: 40px;
+    height: 33px;
+}
+
+.status__target.motion_st {
+    background-image: url('../TARGET.svg');
 }
 
 .arrw_img {
