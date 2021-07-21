@@ -296,12 +296,13 @@ button.drive_button:hover .bttn_img {
     align-items: center;
     /*position: absolute;*/
     /*width: 100%;*/
-    width: 40px;
+    width: 50px;
     height: 100%;
     /*margin-left: 20px;*/
-    margin: 0 5%;
+    /*margin: 0 5%;*/
 }
 
+/*arrows and target configuration*/
 .status__arrow {
     /*position: absolute;*/
     position: relative;
@@ -364,6 +365,83 @@ button.drive_button:hover .bttn_img {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
+
+/*brakes configuration*/
+
+.status__brake {
+    position: relative;
+    background-size: cover;
+    width: 8px;
+    height: 25px;
+}
+
+.status__brake.left_b {
+    background-image: url('../BRAKE-L.svg');
+    transform: translateX(8px);
+}
+
+.status__brake.right_b {
+    background-image: url('../BRAKE-R.svg');
+    transform: translateX(-8px);
+}
+
+.status__brkpad.motion_st {
+    position: relative;
+    background-size: cover;
+    background-image: url('../BRAKED.svg');
+    width: 30px;
+    height: 25px;
+    transform: translateX(0px);
+}
+
+@keyframes fromLeft {
+  0% {opacity: 0; transform: translateX(0px) scale(0.1);}
+  25%{opacity: 0.5; transform: translateX(2px) scale(0.35);}
+  50%{opacity: 0.75; transform: translateX(4px) scale(0.65);}
+  75% {opacity: 1; transform: translateX(8px) scale(0.95);}
+  100% {opacity: 0; transform: translateX(8px) scale(1);}
+}
+
+@keyframes fromRight {
+  0% {opacity: 0; transform: translateX(0px) scale(0.1);}
+  25%{opacity: 0.5; transform: translateX(-2px) scale(0.35);}
+  50%{opacity: 0.75; transform: translateX(-4px) scale(0.65);}
+  75% {opacity: 1; transform: translateX(-8px) scale(0.95);}
+  100% {opacity: 0; transform: translateX(-8px) scale(1);}
+}
+
+@keyframes toLeft {
+  0% {opacity: 1; transform: translateX(8px) scale(1.0);}
+  25%{opacity: 1; transform: translateX(4px) scale(0.95);}
+  50%{opacity: 0.75; transform: translateX(2px) scale(0.65);}
+  75% {opacity: 0.5; transform: translateX(0px) scale(0.35);}
+  100% {opacity: 0; transform: translateX(0px) scale(0.1);}
+}
+
+@keyframes toRight {
+  0% {opacity: 1; transform: translateX(-8px) scale(1.0);}
+  25%{opacity: 1; transform: translateX(-4px) scale(0.95);}
+  50%{opacity: 0.75; transform: translateX(-2px) scale(0.65);}
+  75% {opacity: 0.5; transform: translateX(0px) scale(0.35);}
+  100% {opacity: 0; transform: translateX(0px) scale(0.1);}
+}
+
+.applyBrakes {
+    /*animation-name: fromLeft;*/
+    animation-name: toLeft;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.right_b.applyBrakes {
+    /*animation-name: fromRight;*/
+    animation-name: toRight;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
 
 #x1 {
     background-image: url('../BRAKE-L.svg');

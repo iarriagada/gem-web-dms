@@ -34,7 +34,57 @@ function setDrvState(tag_id, stban_id, icon_id, val) {
     }
 }
 
-function setMotionState(txt_id, stban_id, arrw1_id, arrw2_id, icon_id, val) {
+function setMotionState(axis, val) {
+    var txt_id = axis + "motnst_txt";
+    var stban_id = axis + "motn_state";
+    var arrw1_id = axis + "motn_a1";
+    var arrw2_id = axis + "motn_a2";
+    var icon_id = axis + "motnst_tgt";
+    var icotrack_id = axis + "tracking_ico";
+    var icostop_id = axis + "stopped_ico";
+    var icobrake_id = axis + "brakes_ico";
+    //switch(axis) {
+        //case 'AZ':
+            //var txt_id = "#azmotnst_txt";
+            //var stban_id = "#azmotn_state";
+            //var arrw1_id = "#azmotn_a1";
+            //var arrw2_id = "#azmotn_a2";
+            //var icon_id = "#azmotnst_tgt";
+            //var icotrack_id = "#aztracking_ico";
+            //var icostop_id = "#azstopped_ico";
+            //var icobrake_id = "#azbrakes_ico";
+            //break;
+        //case 'EL':
+            //var txt_id = "#elmotnst_txt";
+            //var stban_id = "#elmotn_state";
+            //var arrw1_id = "#elmotn_a1";
+            //var arrw2_id = "#elmotn_a2";
+            //var icon_id = "#elmotnst_tgt";
+            //var icotrack_id = "#eltracking_ico";
+            //var icostop_id = "#elstopped_ico";
+            //var icobrake_id = "#elbrakes_ico";
+            //break;
+        //case 'CR':
+            //var txt_id = "#crmotnst_txt";
+            //var stban_id = "#crmotn_state";
+            //var arrw1_id = "#crmotn_a1";
+            //var arrw2_id = "#crmotn_a2";
+            //var icon_id = "#crmotnst_tgt";
+            //var icotrack_id = "#crtracking_ico";
+            //var icostop_id = "#crstopped_ico";
+            //var icobrake_id = "#crbrakes_ico";
+            //break;
+        //default:
+            //var txt_id = "";
+            //var stban_id = "";
+            //var arrw1_id = "";
+            //var arrw2_id = "";
+            //var icon_id = "";
+            //var icotrack_id = "";
+            //var icostop_id = "";
+            //var icobrake_id = "";
+    //}
+
     switch(val) {
         case "TRACKING":
             $(txt_id).text(val);
@@ -43,6 +93,9 @@ function setMotionState(txt_id, stban_id, arrw1_id, arrw2_id, icon_id, val) {
             $(stban_id).css('color', '#008f00');
             $(arrw1_id).addClass('bounceAlpha');
             $(arrw2_id).addClass('bounceAlpha');
+            $(icon_id).css('background-image', 'url("/static/TARGET.svg")');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'none');
             break;
         case "SLEWING":
             $(txt_id).text('DISASSERTED');
@@ -52,14 +105,18 @@ function setMotionState(txt_id, stban_id, arrw1_id, arrw2_id, icon_id, val) {
             $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
             break;
         case "STATIONARY":
-            $(txt_id).text('ASSERTED');
+            $(txt_id).text(val);
             $(stban_id).css('background', '#008800');
             $(stban_id).css('border-color', '#ffff00');
             $(stban_id).css('color', '#ffff00');
             $(icon_id).css('background-image', 'url("/static/ASSERTED.svg")');
             break;
         case "BRAKED":
-            $(txt_id).text('Fault (LOW)');
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#ffe7e7');
+            $(stban_id).css('border-color', '#d60000');
+            $(stban_id).css('color', '#d60000');
+            $(icon_id).css('background-image', 'url("/static/BRAKED.svg")');
             break;
         case "APPLY BRAKES":
             $(txt_id).text('Fault (LOW)');
@@ -144,9 +201,11 @@ function getEnvironData(data) {
 function getMCSData(data) {
     setDrvState("#azdrvst_txt", "#azdrv_state", "#azdrvst_tgt", data.azdrv_st);
     setDrvState("#eldrvst_txt", "#eldrv_state", "#eldrvst_tgt", data.eldrv_st);
-    setMotionState("#azmotnst_txt", "#azmotn_state", "#azmotn_a1", "#azmotn_a2", "#azmotnst_tgt", data.az_st);
+    setMotionState("#az", data.az_st);
+    //setMotionState("#azmotnst_txt", "#azmotn_state", "#azmotn_a1", "#azmotn_a2", "#azmotnst_tgt", data.az_st);
     //$("#azmotnst_txt").text(data.az_st);
-    setMotionState("#elmotnst_txt", "#elmotn_state", "#elmotn_a1", "#elmotn_a2", "#elmotnst_tgt", data.el_st);
+    setMotionState("#el", data.el_st);
+    //setMotionState("#elmotnst_txt", "#elmotn_state", "#elmotn_a1", "#elmotn_a2", "#elmotnst_tgt", data.el_st);
     //$("#elmotnst_txt").text(data.el_st);
 }
 

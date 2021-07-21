@@ -181,10 +181,20 @@
                             <div class="status_banner">
                                 <div class="status__bg" id="azmotn_state">
                                     <div class="status_text" id="azmotnst_txt">RELEASE BRAKES</div>
-                                    <div class="status__ico" id="azmotnst_ico">
+                                    <div class="status__ico" id="aztracking_ico">
                                         <span class="status__arrow first arrw_img " id="azmotn_a1"></span>
                                         <span class="status__arrow second arrw_img " id="azmotn_a2"></span>
                                         <span class="status__target motion_st" id="azmotnst_tgt"></span>
+                                    </div>
+                                    <div class="status__ico" id="azstopped_ico">
+                                        <span class="status__arrow first arrw_img " id="azmotn_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="azmotn_a2"></span>
+                                        <span class="status__target motion_st" id="azmotnst_stop"></span>
+                                    </div>
+                                    <div class="status__ico" id="azbrakes_ico">
+                                        <span class="status__brake left_b brk_img " id="azmotn_b1"></span>
+                                        <span class="status__brkpad motion_st" id="azmotnst_brk"></span>
+                                        <span class="status__brake right_b brk_img " id="azmotn_b2"></span>
                                     </div>
                                 </div>
                             </div>
@@ -224,36 +234,20 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<p>Elevation</p>-->
-                        <!--<div class="main__onoff el_ass">-->
-                            <!--[><span class="ain__onoff-label ahu">Power</span><]-->
-                            <!--<button class="main__onoff-on el_ass">ASSERT</button><button class="main__onoff-off el_ass">DISASSERT</button>-->
-                            <!--<span  id="eldrv_state"> ASSERTED</span>-->
-                            <!--[><button class="cr_ass__cmd-bttn">STOP</button><]-->
-                        <!--</div>-->
-                        <!--<p>Status: <span id="el_state"> TRACKING</span></p>-->
-                    <!--</section>-->
-                    <!--<div class="drive_ctrl">-->
-                        <!--<button id="ass_bttn" class="drive_button assert">-->
-                            <!--<div class="bttn_text">ASSERT</div>-->
-                            <!--<div class="bttn_img"><img id="ass_icon" src="/static/assert.svg" alt="assert icon"></div>-->
-                        <!--</button>-->
-                        <!--[><p></p><]-->
-                        <!--<button id="dass_bttn" class="drive_button disassert">-->
-                            <!--<div class="bttn_text">DISASSERT</div>-->
-                            <!--<div class="bttn_img"><img id="dass_icon" src="/static/disassert.svg" alt="assert icon"></div>-->
-                        <!--</button>-->
-                    <!--</div>-->
-                    <!--<p></p>-->
                 </section>
                 <div class="status">
                     <div class="status__bg" id="t1">
                         <div class="status_text">RELEASE BRAKES</div>
-                        <div class="status__ico">
-                            <span class="status__arrow first arrw_img " id="x1"></span>
-                            <span class="status__arrow second arrw_img " id="x2"></span>
-                            <span class="status__target" id="x3"></span>
+                        <div class="status__ico" id="azbrakes_ico">
+                            <span class="status__brake left_b brk_img applyBrakes" id="azmotn_b1_test"></span>
+                            <span class="status__brkpad motion_st" id="azmotnst_brk_test"></span>
+                            <span class="status__brake right_b brk_img applyBrakes" id="azmotn_b2_test"></span>
                         </div>
+                        <!--<div class="status__ico">-->
+                            <!--<span class="status__arrow first arrw_img " id="x1"></span>-->
+                            <!--<span class="status__arrow second arrw_img " id="x2"></span>-->
+                            <!--<span class="status__target" id="x3"></span>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
