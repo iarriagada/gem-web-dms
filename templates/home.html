@@ -152,7 +152,7 @@
                 </section>
                 <section class="sys_panel" id="mcs">
                     <h1 id="mcs_ctrl_title" class="panel_title">MCS Control</h1>
-                    <!--<p>Place holder for MCS control</p>-->
+                    <!--MCS subpanel-->
                     <section class="sys_subpanel mcs_sp" id="mcs_az_pnl">
                         <div id="azimuth_l" class="axis_ctrl left">
                             <p class="axis_lbl">Azimuth</p>
@@ -170,10 +170,8 @@
                             </div>
                             <div class="status_banner">
                                 <div class="status__bg" id="azdrv_state">
-                                    <div class="status_text" id="azdrvst_txt">RELEASE BRAKES</div>
+                                    <div class="status_text" id="azdrvst_txt">DISASSERTED</div>
                                     <div class="status__ico" id="azdrvst_ico">
-                                        <!--<span class="status__arrow first arrw_img " id="azdrvst_a1"></span>-->
-                                        <!--<span class="status__arrow second arrw_img " id="azdrvst_a2"></span>-->
                                         <span class="status__target drive_st" id="azdrvst_tgt"></span>
                                     </div>
                                 </div>
@@ -186,15 +184,18 @@
                                         <span class="status__arrow second arrw_img " id="azmotn_a2"></span>
                                         <span class="status__target motion_st" id="azmotnst_tgt"></span>
                                     </div>
-                                    <div class="status__ico" id="azstopped_ico">
-                                        <span class="status__arrow first arrw_img " id="azmotn_a1"></span>
-                                        <span class="status__arrow second arrw_img " id="azmotn_a2"></span>
-                                        <span class="status__target motion_st" id="azmotnst_stop"></span>
+                                    <div class="status__ico stopped" id="azstopped_ico">
+                                        <span class="status__stop motion_st" id="azmotnst_stop"></span>
                                     </div>
+                                    <!--<div class="status__ico" id="azbrakes_ico">-->
+                                        <!--<span class="status__brake left_b brk_img " id="azmotn_b1"></span>-->
+                                        <!--<span class="status__brkpad motion_st" id="azmotnst_brk"></span>-->
+                                        <!--<span class="status__brake right_b brk_img " id="azmotn_b2"></span>-->
+                                    <!--</div>-->
                                     <div class="status__ico" id="azbrakes_ico">
-                                        <span class="status__brake left_b brk_img " id="azmotn_b1"></span>
+                                        <span class="status__brake left_b brk_img applyBrakes" id="azmotn_b1"></span>
                                         <span class="status__brkpad motion_st" id="azmotnst_brk"></span>
-                                        <span class="status__brake right_b brk_img " id="azmotn_b2"></span>
+                                        <span class="status__brake right_b brk_img applyBrakes" id="azmotn_b2"></span>
                                     </div>
                                 </div>
                             </div>

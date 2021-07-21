@@ -39,54 +39,18 @@ function setMotionState(axis, val) {
     var stban_id = axis + "motn_state";
     var arrw1_id = axis + "motn_a1";
     var arrw2_id = axis + "motn_a2";
+    var brk1_id = axis + "motn_b1";
+    var brk2_id = axis + "motn_b2";
     var icon_id = axis + "motnst_tgt";
     var icotrack_id = axis + "tracking_ico";
     var icostop_id = axis + "stopped_ico";
     var icobrake_id = axis + "brakes_ico";
-    //switch(axis) {
-        //case 'AZ':
-            //var txt_id = "#azmotnst_txt";
-            //var stban_id = "#azmotn_state";
-            //var arrw1_id = "#azmotn_a1";
-            //var arrw2_id = "#azmotn_a2";
-            //var icon_id = "#azmotnst_tgt";
-            //var icotrack_id = "#aztracking_ico";
-            //var icostop_id = "#azstopped_ico";
-            //var icobrake_id = "#azbrakes_ico";
-            //break;
-        //case 'EL':
-            //var txt_id = "#elmotnst_txt";
-            //var stban_id = "#elmotn_state";
-            //var arrw1_id = "#elmotn_a1";
-            //var arrw2_id = "#elmotn_a2";
-            //var icon_id = "#elmotnst_tgt";
-            //var icotrack_id = "#eltracking_ico";
-            //var icostop_id = "#elstopped_ico";
-            //var icobrake_id = "#elbrakes_ico";
-            //break;
-        //case 'CR':
-            //var txt_id = "#crmotnst_txt";
-            //var stban_id = "#crmotn_state";
-            //var arrw1_id = "#crmotn_a1";
-            //var arrw2_id = "#crmotn_a2";
-            //var icon_id = "#crmotnst_tgt";
-            //var icotrack_id = "#crtracking_ico";
-            //var icostop_id = "#crstopped_ico";
-            //var icobrake_id = "#crbrakes_ico";
-            //break;
-        //default:
-            //var txt_id = "";
-            //var stban_id = "";
-            //var arrw1_id = "";
-            //var arrw2_id = "";
-            //var icon_id = "";
-            //var icotrack_id = "";
-            //var icostop_id = "";
-            //var icobrake_id = "";
-    //}
 
     switch(val) {
         case "TRACKING":
+            $(icotrack_id).css('display', 'flex');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'none');
             $(txt_id).text(val);
             $(stban_id).css('background', '#e5ffc2');
             $(stban_id).css('border-color', '#008f00');
@@ -94,8 +58,6 @@ function setMotionState(axis, val) {
             $(arrw1_id).addClass('bounceAlpha');
             $(arrw2_id).addClass('bounceAlpha');
             $(icon_id).css('background-image', 'url("/static/TARGET.svg")');
-            $(icobrake_id).css('display', 'none');
-            $(icostop_id).css('display', 'none');
             break;
         case "SLEWING":
             $(txt_id).text('DISASSERTED');
@@ -105,24 +67,44 @@ function setMotionState(axis, val) {
             $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
             break;
         case "STATIONARY":
+            $(icostop_id).css('display', 'flex');
+            $(icotrack_id).css('display', 'none');
+            $(icobrake_id).css('display', 'none');
             $(txt_id).text(val);
-            $(stban_id).css('background', '#008800');
-            $(stban_id).css('border-color', '#ffff00');
-            $(stban_id).css('color', '#ffff00');
-            $(icon_id).css('background-image', 'url("/static/ASSERTED.svg")');
+            $(stban_id).css('background', '#c7f0ff');
+            $(stban_id).css('border-color', '#eb0000');
+            $(stban_id).css('color', '#eb0000');
+            //$(icon_id).css('background-image', 'url("/static/STATIONARY.svg")');
             break;
         case "BRAKED":
+            $(icobrake_id).css('display', 'flex');
+            $(brk1_id).removeClass('applyBrakes');
+            $(brk2_id).removeClass('applyBrakes');
             $(txt_id).text(val);
             $(stban_id).css('background', '#ffe7e7');
             $(stban_id).css('border-color', '#d60000');
             $(stban_id).css('color', '#d60000');
-            $(icon_id).css('background-image', 'url("/static/BRAKED.svg")');
+            //$(icon_id).css('background-image', 'url("/static/BRAKED.svg")');
+            $(icotrack_id).css('display', 'none');
+            $(icostop_id).css('display', 'none');
             break;
         case "APPLY BRAKES":
-            $(txt_id).text('Fault (LOW)');
+            $(icobrake_id).css('display', 'flex');
+            $(brk1_id).removeClass('applyBrakes');
+            $(brk2_id).removeClass('applyBrakes');
+            $(txt_id).text(val);
+            $(brk1_id).addClass('applyBrakes');
+            $(brk2_id).addClass('applyBrakes');
+            $(brk1_id).removeClass('releaseBrakes');
+            $(brk2_id).removeClass('releaseBrakes');
             break;
         case "RELEASE BRAKES":
-            $(txt_id).text('Fault (LOW)');
+            $(icobrake_id).css('display', 'flex');
+            $(txt_id).text(val);
+            $(brk1_id).addClass('releaseBrakes');
+            $(brk2_id).addClass('releaseBrakes');
+            $(brk1_id).removeClass('applyBrakes');
+            $(brk2_id).removeClass('applyBrakes');
             break;
         default:
             $(txt_id).text('Me no entender');

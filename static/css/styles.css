@@ -366,6 +366,16 @@ button.drive_button:hover .bttn_img {
     animation-timing-function: linear;
 }
 
+/*stationary configuration*/
+.status__stop.motion_st {
+    position: relative;
+    background-size: cover;
+    background-image: url('../STATIONARY.svg');
+    width: 30px;
+    height: 25px;
+    transform: translateX(0px);
+}
+
 /*brakes configuration*/
 
 .status__brake {
@@ -376,19 +386,19 @@ button.drive_button:hover .bttn_img {
 }
 
 .status__brake.left_b {
-    background-image: url('../BRAKE-L.svg');
+    background-image: url('../BRAKE-Lred.svg');
     transform: translateX(8px);
 }
 
 .status__brake.right_b {
-    background-image: url('../BRAKE-R.svg');
+    background-image: url('../BRAKE-Rred.svg');
     transform: translateX(-8px);
 }
 
 .status__brkpad.motion_st {
     position: relative;
     background-size: cover;
-    background-image: url('../BRAKED.svg');
+    background-image: url('../BRAKED-red.svg');
     width: 30px;
     height: 25px;
     transform: translateX(0px);
@@ -428,13 +438,29 @@ button.drive_button:hover .bttn_img {
 
 .applyBrakes {
     /*animation-name: fromLeft;*/
-    animation-name: toLeft;
+    animation-name: fromLeft;
     animation-duration:1.4s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
 }
 
 .right_b.applyBrakes {
+    /*animation-name: fromRight;*/
+    animation-name: fromRight;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.releaseBrakes {
+    /*animation-name: fromLeft;*/
+    animation-name: toLeft;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.right_b.releaseBrakes {
     /*animation-name: fromRight;*/
     animation-name: toRight;
     animation-duration:1.4s;
