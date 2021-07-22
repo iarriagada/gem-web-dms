@@ -57,19 +57,25 @@ function setMotionState(axis, val) {
             $(stban_id).css('color', '#008f00');
             $(arrw1_id).addClass('bounceAlpha');
             $(arrw2_id).addClass('bounceAlpha');
-            $(icon_id).css('background-image', 'url("/static/TARGET.svg")');
+            //$(icon_id).css('background-image', 'url("/static/TARGET.svg")');
             break;
         case "SLEWING":
-            $(txt_id).text('DISASSERTED');
-            $(stban_id).css('background', '#0000ff');
-            $(stban_id).css('border-color', '#ff8080');
-            $(stban_id).css('color', '#ff8080');
-            $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
+            $(icotrack_id).css('display', 'flex');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'none');
+            $(txt_id).text(val);
+            //$(stban_id).css('background', '#0000ff');
+            //$(stban_id).css('border-color', '#ff8080');
+            //$(stban_id).css('color', '#ff8080');
+            $(stban_id).css('background', '#ccfffb');
+            $(stban_id).css('border-color', '#008f00');
+            $(stban_id).css('color', '#008f00');
+            //$(icon_id).css('background-image', 'url("/static/TARGET.svg")');
             break;
         case "STATIONARY":
-            $(icostop_id).css('display', 'flex');
             $(icotrack_id).css('display', 'none');
             $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'flex');
             $(txt_id).text(val);
             $(stban_id).css('background', '#c7f0ff');
             $(stban_id).css('border-color', '#eb0000');
@@ -77,19 +83,23 @@ function setMotionState(axis, val) {
             //$(icon_id).css('background-image', 'url("/static/STATIONARY.svg")');
             break;
         case "BRAKED":
+            $(icotrack_id).css('display', 'none');
             $(icobrake_id).css('display', 'flex');
+            $(icostop_id).css('display', 'none');
             $(brk1_id).removeClass('applyBrakes');
             $(brk2_id).removeClass('applyBrakes');
+            $(brk1_id).removeClass('releaseBrakes');
+            $(brk2_id).removeClass('releaseBrakes');
             $(txt_id).text(val);
             $(stban_id).css('background', '#ffe7e7');
             $(stban_id).css('border-color', '#d60000');
             $(stban_id).css('color', '#d60000');
             //$(icon_id).css('background-image', 'url("/static/BRAKED.svg")');
-            $(icotrack_id).css('display', 'none');
-            $(icostop_id).css('display', 'none');
             break;
         case "APPLY BRAKES":
+            $(icotrack_id).css('display', 'none');
             $(icobrake_id).css('display', 'flex');
+            $(icostop_id).css('display', 'none');
             $(brk1_id).removeClass('applyBrakes');
             $(brk2_id).removeClass('applyBrakes');
             $(txt_id).text(val);
@@ -99,7 +109,9 @@ function setMotionState(axis, val) {
             $(brk2_id).removeClass('releaseBrakes');
             break;
         case "RELEASE BRAKES":
+            $(icotrack_id).css('display', 'none');
             $(icobrake_id).css('display', 'flex');
+            $(icostop_id).css('display', 'none');
             $(txt_id).text(val);
             $(brk1_id).addClass('releaseBrakes');
             $(brk2_id).addClass('releaseBrakes');
@@ -107,7 +119,7 @@ function setMotionState(axis, val) {
             $(brk2_id).removeClass('applyBrakes');
             break;
         default:
-            $(txt_id).text('Me no entender');
+            $(txt_id).text(val);
     }
 }
 

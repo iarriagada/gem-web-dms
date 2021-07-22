@@ -372,7 +372,7 @@ button.drive_button:hover .bttn_img {
     background-size: cover;
     background-image: url('../STATIONARY.svg');
     width: 30px;
-    height: 25px;
+    height: 30px;
     transform: translateX(0px);
 }
 
@@ -439,7 +439,7 @@ button.drive_button:hover .bttn_img {
 .applyBrakes {
     /*animation-name: fromLeft;*/
     animation-name: fromLeft;
-    animation-duration:1.4s;
+    animation-duration:1.0s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
 }
@@ -447,7 +447,7 @@ button.drive_button:hover .bttn_img {
 .right_b.applyBrakes {
     /*animation-name: fromRight;*/
     animation-name: fromRight;
-    animation-duration:1.4s;
+    animation-duration:1.0s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
 }
@@ -455,7 +455,7 @@ button.drive_button:hover .bttn_img {
 .releaseBrakes {
     /*animation-name: fromLeft;*/
     animation-name: toLeft;
-    animation-duration:1.4s;
+    animation-duration:1.0s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
 }
@@ -463,7 +463,7 @@ button.drive_button:hover .bttn_img {
 .right_b.releaseBrakes {
     /*animation-name: fromRight;*/
     animation-name: toRight;
-    animation-duration:1.4s;
+    animation-duration:1.0s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
 }
