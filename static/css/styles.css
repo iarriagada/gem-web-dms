@@ -57,7 +57,7 @@ html {
     margin: 5px 0;
 }
 
-.ecs_pwr_body, .ecs_init, .mcs_sp {
+.ecs_pwr_body, .ecs_init, .mcs_sp, .crcs_sp {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,8 +272,8 @@ button.drive_button:hover .bttn_img {
     display: flex;
     align-items: center;
     background: #ddffcc;
-    border: 2px solid;
-    border-color: #449944;
+    /*border: 2px solid;*/
+    /*border-color: #449944;*/
     color: rgb(10,100,10,0.75);
     height: 100%;
     /*width: fit-content;*/
@@ -351,6 +351,14 @@ button.drive_button:hover .bttn_img {
   55% {opacity: 1; transform: translateX(0px) scale(1);}
 }
 
+@keyframes pulseIcon {
+  0% {opacity: 0.1; transform: translateX(5px) scale(0.1);}
+  25%{opacity: 0.30; transform: translateX(5px) scale(0.30);}
+  50%{opacity: 0.60; transform: translateX(5px) scale(0.6);}
+  75% {opacity: 1.0; transform: translateX(5px) scale(1.00);}
+  100% {opacity: 1.0; transform: translateX(5px) scale(1.0);}
+}
+
 .bounceAlpha {
     animation-name: bounceAlpha;
     animation-duration:1.4s;
@@ -362,6 +370,13 @@ button.drive_button:hover .bttn_img {
     animation-name: bounceAlpha;
     animation-duration: 1.4s;
     animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.pulseTarget {
+    animation-name: pulseIcon;
+    animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }

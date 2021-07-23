@@ -39,6 +39,7 @@ function setMotionState(axis, val) {
     var stban_id = axis + "motn_state";
     var arrw1_id = axis + "motn_a1";
     var arrw2_id = axis + "motn_a2";
+    var tgt_id = axis + "motnst_tgt";
     var brk1_id = axis + "motn_b1";
     var brk2_id = axis + "motn_b2";
     var icon_id = axis + "motnst_tgt";
@@ -53,10 +54,11 @@ function setMotionState(axis, val) {
             $(icostop_id).css('display', 'none');
             $(txt_id).text(val);
             $(stban_id).css('background', '#e5ffc2');
-            $(stban_id).css('border-color', '#008f00');
+            //$(stban_id).css('border-color', '#008f00');
             $(stban_id).css('color', '#008f00');
             $(arrw1_id).addClass('bounceAlpha');
             $(arrw2_id).addClass('bounceAlpha');
+            $(tgt_id).removeClass('pulseTarget');
             //$(icon_id).css('background-image', 'url("/static/TARGET.svg")');
             break;
         case "SLEWING":
@@ -68,8 +70,11 @@ function setMotionState(axis, val) {
             //$(stban_id).css('border-color', '#ff8080');
             //$(stban_id).css('color', '#ff8080');
             $(stban_id).css('background', '#ccfffb');
-            $(stban_id).css('border-color', '#008f00');
+            //$(stban_id).css('border-color', '#008f00');
             $(stban_id).css('color', '#008f00');
+            $(arrw1_id).removeClass('bounceAlpha');
+            $(arrw2_id).removeClass('bounceAlpha');
+            $(tgt_id).addClass('pulseTarget');
             //$(icon_id).css('background-image', 'url("/static/TARGET.svg")');
             break;
         case "STATIONARY":
@@ -78,7 +83,7 @@ function setMotionState(axis, val) {
             $(icostop_id).css('display', 'flex');
             $(txt_id).text(val);
             $(stban_id).css('background', '#c7f0ff');
-            $(stban_id).css('border-color', '#eb0000');
+            //$(stban_id).css('border-color', '#eb0000');
             $(stban_id).css('color', '#eb0000');
             //$(icon_id).css('background-image', 'url("/static/STATIONARY.svg")');
             break;
@@ -92,7 +97,7 @@ function setMotionState(axis, val) {
             $(brk2_id).removeClass('releaseBrakes');
             $(txt_id).text(val);
             $(stban_id).css('background', '#ffe7e7');
-            $(stban_id).css('border-color', '#d60000');
+            //$(stban_id).css('border-color', '#d60000');
             $(stban_id).css('color', '#d60000');
             //$(icon_id).css('background-image', 'url("/static/BRAKED.svg")');
             break;
@@ -204,8 +209,10 @@ function getMCSData(data) {
 }
 
 function getCRCSData(data) {
-    setDrvState("#crdrv_state", data.crdrv_st);
-    $("#cr_state").text(data.cr_st);
+    setDrvState("#crdrvst_txt", "#crdrv_state", "#crdrvst_tgt", data.crdrv_st);
+    //setDrvState("#crdrv_state", data.crdrv_st);
+    //$("#cr_state").text(data.cr_st);
+    setMotionState("#cr", data.cr_st);
     setPWRcolor("#crarm_state", data.crarm_st);
 }
 
