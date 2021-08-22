@@ -144,18 +144,28 @@
                     <section class="sys_subpanel crcs_sp" id="crcs_cr_pnl">
                         <div id="cassrot_l" class="axis_ctrl left">
                             <p class="axis_lbl">Cass Rotator</p>
+                            <div class="ctrl_bttns">
+                                <button id="crarm_bttn" class="action_button drives action arm">
+                                    <div class="bttn_text">ARM</div>
+                                    <div class="bttn_img"><img id="crass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
+                                </button>
+                                <button id="crdarm_bttn" class="action_button drives reaction disarm">
+                                    <div class="bttn_text">DISARM</div>
+                                    <div class="bttn_img"><img id="crdass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
+                                </button>
+                            </div>
                             <div class="main__onoff cr_arm">
                                 <button class="main__onoff-on cr_arm">ARM</button><button class="main__onoff-off cr_arm">DISARM</button>
                                 <span class="indicator" id="crarm_state"></span>
                             </div>
                         </div>
                         <div id="cassrot_r" class="axis_ctrl right">
-                            <div class="drive_ctrl">
-                                <button id="crass_bttn" class="drive_button assert">
+                            <div class="ctrl_bttns">
+                                <button id="crass_bttn" class="action_button drives action assert">
                                     <div class="bttn_text">ASSERT</div>
                                     <div class="bttn_img"><img id="crass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
                                 </button>
-                                <button id="crdass_bttn" class="drive_button disassert">
+                                <button id="crdass_bttn" class="action_button drives reaction disassert">
                                     <div class="bttn_text">DISASSERT</div>
                                     <div class="bttn_img"><img id="crdass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
                                 </button>
@@ -204,12 +214,12 @@
                             <p class="axis_lbl">Azimuth</p>
                         </div>
                         <div id="azimuth_r" class="axis_ctrl right">
-                            <div class="drive_ctrl">
-                                <button id="azass_bttn" class="drive_button assert">
+                            <div class="ctrl_bttns">
+                                <button id="azass_bttn" class="action_button drives action assert">
                                     <div class="bttn_text">ASSERT</div>
                                     <div class="bttn_img"><img id="azass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
                                 </button>
-                                <button id="azdass_bttn" class="drive_button disassert">
+                                <button id="azdass_bttn" class="action_button drives reaction disassert">
                                     <div class="bttn_text">DISASSERT</div>
                                     <div class="bttn_img"><img id="azdass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
                                 </button>
@@ -249,12 +259,12 @@
                             <p class="axis_lbl">Elevation</p>
                         </div>
                         <div id="elevation_r" class="axis_ctrl right">
-                            <div class="drive_ctrl">
-                                <button id="elass_bttn" class="drive_button assert">
+                            <div class="ctrl_bttns">
+                                <button id="elass_bttn" class="action_button drives action assert">
                                     <div class="bttn_text">ASSERT</div>
                                     <div class="bttn_img"><img id="elass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
                                 </button>
-                                <button id="eldass_bttn" class="drive_button disassert">
+                                <button id="eldass_bttn" class="action_button drives reaction disassert">
                                     <div class="bttn_text">DISASSERT</div>
                                     <div class="bttn_img"><img id="eldass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
                                 </button>

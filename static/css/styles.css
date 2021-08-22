@@ -155,13 +155,13 @@ html {
 
 /* Start of Assert/Disassert Buttons style specs */
 
-.drive_ctrl {
+.ctrl_bttns {
     display: flex;
     align-items: center;
     margin: 3px 0px;
 }
 
-button.drive_button {
+button.action_button {
     font: inherit;
     width: 140px;
     height: 40px;
@@ -173,23 +173,23 @@ button.drive_button {
     /*margin: 10px;*/
 }
 
-button.drive_button.assert {
+button.action_button.action {
     background: #22ff22;
     margin-right: 3px;
 }
 
-button.drive_button.disassert {
+button.action_button.reaction {
     background: #ffaaaa;
     margin-left: 3px;
 }
 
-button.drive_button,
-button.drive_button .bttn_text,
-button.drive_button .bttn_img {
+button.action_button,
+button.action_button .bttn_text,
+button.action_button .bttn_img {
     transition: 200ms;
 }
 
-button.drive_button .bttn_text {
+button.action_button .bttn_text {
     font-size: 0.9em;
     font-weight: bold;
     transform: translateX(0px);
@@ -200,15 +200,15 @@ button.drive_button .bttn_text {
     justify-content: center;
 }
 
-button.drive_button.assert .bttn_text {
+button.action_button.action .bttn_text {
     color: #155015;
 }
 
-button.drive_button.disassert .bttn_text {
+button.action_button.reaction .bttn_text {
     color: #702020;
 }
 
-button.drive_button .bttn_img {
+button.action_button .bttn_img {
     position: absolute;
     height: 30px;
     width: 40px;
@@ -219,39 +219,43 @@ button.drive_button .bttn_img {
     /*padding: 0px 2px 0px 2px;*/
 }
 
-button.drive_button.assert .bttn_img {
+button.action_button.action .bttn_img {
     border-left: 1px solid #00cc00;
 }
 
-button.drive_button.disassert .bttn_img {
+button.action_button.reaction .bttn_img {
     border-left: 1px solid #dd6666;
 }
 
-button.drive_button.assert:hover {
+button.action_button.action:hover {
     background: #66ff66;
 }
 
-button.drive_button.assert:active {
+button.action_button.action:active {
     box-shadow: 0px 0px 15px #99ff99;
 }
 
-button.drive_button.disassert:hover {
+button.action_button.reaction:hover {
     background: #ff6666;
 }
 
-button.drive_button.disassert:active {
+button.action_button.reaction:active {
     box-shadow: 0px 0px 15px #ff9999;
 }
 
-/*button.drive_button.assert:hover .bttn_text{*/
-button.drive_button:hover .bttn_text {
+button.action_button:hover .bttn_text {
     color: transparent;
 }
 
-button.drive_button:hover .bttn_img {
+button.action_button:hover .bttn_img {
     width: 140px;
     border-left: none;
     transform: translateX(0);
+}
+
+button.action_button.drives {
+    width: 140px;
+    height: 40px;
 }
 
 /*
