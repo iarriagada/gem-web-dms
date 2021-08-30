@@ -39,18 +39,72 @@
                             <button class="ecs_init__cmd-bttn">INIT</button>
                         </div>
                     </div>
-                    <div class="sys_subpanel ecs_pwr_body">
-                        <div class="main__onoff">
-                            <span class="main__onoff-label">Power</span>
-                            <button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>
+                    <div class="sys_subpanel ecs_pwr_cmd">
+                        <div class="ctrl_bttns">
+                            <button id="ecson_bttn" class="action_button crdrives action arm">
+                                <div class="bttn_text">ON</div>
+                                <div class="bttn_img"><img id="crass_icon" src="/static/ARM.svg" alt="assert icon"></div>
+                            </button>
+                            <button id="ecsoff_bttn" class="action_button crdrives reaction disarm">
+                                <div class="bttn_text">OFF</div>
+                                <div class="bttn_img"><img id="crdass_icon" src="/static/DISARM.svg" alt="assert icon"></div>
+                            </button>
                         </div>
-                        <ul class="section_col">
-                            <li class="ecs_mech__status"><span class="indicator" id="dome_pwr"></span> Dome</li>
-                            <li class="ecs_mech__status"><span class="indicator" id="ts_pwr"></span> Top Shutter</li>
-                            <li class="ecs_mech__status"><span class="indicator" id="bs_pwr"></span> Bottom Shutter</li>
-                            <li class="ecs_mech__status"><span class="indicator" id="evg_pwr"></span> East Ventgate</li>
-                            <li class="ecs_mech__status"><span class="indicator" id="wvg_pwr"></span> West Ventgate</li>
-                        </ul>
+                    </div>
+                    <div class="sys_subpanel ecs_pwr_body">
+                        <!--<div class="main__onoff">-->
+                            <!--<span class="main__onoff-label">Power</span>-->
+                            <!--<button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>-->
+                        <!--</div>-->
+                        <div id="ecspwr_ind" class="pwr_ind">
+                            <div class="status_indicator">
+                                <div class="status_text" id="tspwr_txt">DOME</div>
+                                <div class="indicator__bg" id="dmpwr_state">
+                                    <div class="indicator__ico" id="dmpwr_ico">
+                                        <span class="indicator__target pwr_st" id="dmpwr_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_indicator">
+                                <div class="status_text" id="tspwr_txt">TOP SHUTTER</div>
+                                <div class="indicator__bg" id="tspwr_state">
+                                    <div class="indicator__ico" id="tspwr_ico">
+                                        <span class="indicator__target pwr_st" id="tspwr_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_indicator">
+                                <div class="status_text" id="tspwr_txt">BOTTOM SHUTTER</div>
+                                <div class="indicator__bg" id="bspwr_state">
+                                    <div class="indicator__ico" id="bspwr_ico">
+                                        <span class="indicator__target pwr_st" id="bspwr_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_indicator">
+                                <div class="status_text" id="tspwr_txt">EAST VENTGATE</div>
+                                <div class="indicator__bg" id="evpwr_state">
+                                    <div class="indicator__ico" id="evpwr_ico">
+                                        <span class="indicator__target pwr_st" id="evpwr_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_indicator">
+                                <div class="status_text" id="tspwr_txt">WEST VENTGATE</div>
+                                <div class="indicator__bg" id="wvpwr_state">
+                                    <div class="indicator__ico" id="wvpwr_ico">
+                                        <span class="indicator__target pwr_st" id="wvpwr_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<ul class="section_col">-->
+                            <!--<li class="ecs_mech__status"><span class="indicator" id="dome_pwr"></span> Dome</li>-->
+                            <!--<li class="ecs_mech__status"><span class="indicator" id="ts_pwr"></span> Top Shutter</li>-->
+                            <!--<li class="ecs_mech__status"><span class="indicator" id="bs_pwr"></span> Bottom Shutter</li>-->
+                            <!--<li class="ecs_mech__status"><span class="indicator" id="evg_pwr"></span> East Ventgate</li>-->
+                            <!--<li class="ecs_mech__status"><span class="indicator" id="wvg_pwr"></span> West Ventgate</li>-->
+                        <!--</ul>-->
                     </div>
                 </section>
                 <!--ecs movement control section-->
@@ -137,29 +191,32 @@
                     <p>HBS Sequence</p>
                     <p><span id="hbsseq"> Example Step 666 RUN</span></p>
                 </section>
+                <!--CRCS control section-->
                 <section class="sys_panel" id="crcs">
                     <h1 id="crcs_ctrl_title" class="panel_title">CRCS Control</h1>
-                    <!--<p>Place holder for CRCS control</p>-->
-                    <!--<p>CRCS Control</p>-->
                     <section class="sys_subpanel crcs_sp" id="crcs_cr_pnl">
                         <div id="cassrot_l" class="axis_ctrl left">
                             <p class="axis_lbl">Cass Rotator</p>
-                            <div class="ctrl_bttns">
-                                <button id="crarm_bttn" class="action_button drives action arm">
-                                    <div class="bttn_text">ARM</div>
-                                    <div class="bttn_img"><img id="crass_icon" src="/static/ASSERT.svg" alt="assert icon"></div>
-                                </button>
-                                <button id="crdarm_bttn" class="action_button drives reaction disarm">
-                                    <div class="bttn_text">DISARM</div>
-                                    <div class="bttn_img"><img id="crdass_icon" src="/static/DISASSERT.svg" alt="assert icon"></div>
-                                </button>
-                            </div>
-                            <div class="main__onoff cr_arm">
-                                <button class="main__onoff-on cr_arm">ARM</button><button class="main__onoff-off cr_arm">DISARM</button>
-                                <span class="indicator" id="crarm_state"></span>
-                            </div>
                         </div>
                         <div id="cassrot_r" class="axis_ctrl right">
+                            <div class="ctrl_bttns">
+                                <button id="crarm_bttn" class="action_button crdrives action arm">
+                                    <div class="bttn_text">ARM</div>
+                                    <div class="bttn_img"><img id="crass_icon" src="/static/ARM.svg" alt="assert icon"></div>
+                                </button>
+                                <button id="crdarm_bttn" class="action_button crdrives reaction disarm">
+                                    <div class="bttn_text">DISARM</div>
+                                    <div class="bttn_img"><img id="crdass_icon" src="/static/DISARM.svg" alt="assert icon"></div>
+                                </button>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="crarm_state">
+                                    <div class="status_text" id="crarmst_txt">DISARMED</div>
+                                    <div class="status__ico" id="crarmst_ico">
+                                        <span class="status__target arm_st" id="crarmst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="ctrl_bttns">
                                 <button id="crass_bttn" class="action_button drives action assert">
                                     <div class="bttn_text">ASSERT</div>
@@ -295,38 +352,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="status_banner">-->
-                                <!--<div class="status__bg" id="elmotn_state">-->
-                                    <!--<div class="status_text" id="elmotnst_txt">RELEASE BRAKES</div>-->
-                                    <!--<div class="status__ico" id="elmotnst_ico">-->
-                                        <!--<span class="status__arrow first arrw_img " id="elmotn_a1"></span>-->
-                                        <!--<span class="status__arrow second arrw_img " id="elmotn_a2"></span>-->
-                                        <!--<span class="status__target motion_st" id="elmotnst_tgt"></span>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
                         </div>
                 </section>
-                <div class="status">
-                    <div class="status__bg" id="t1">
-                        <div class="status_text">RELEASE BRAKES</div>
-                        <div class="status__ico" id="aztracking_ico">
-                            <span class="status__arrow first arrw_img " id="azmotn_x1"></span>
-                            <span class="status__arrow second arrw_img " id="azmotn_x2"></span>
-                            <span class="status__target motion_st pulseTarget" id="azmotnst_tgtx"></span>
-                        </div>
-                        <!--<div class="status__ico" id="azbrakes_ico">-->
-                            <!--<span class="status__brake left_b brk_img applyBrakes" id="azmotn_b1_test"></span>-->
-                            <!--<span class="status__brkpad motion_st" id="azmotnst_brk_test"></span>-->
-                            <!--<span class="status__brake right_b brk_img applyBrakes" id="azmotn_b2_test"></span>-->
-                        <!--</div>-->
-                        <!--<div class="status__ico">-->
-                            <!--<span class="status__arrow first arrw_img " id="x1"></span>-->
-                            <!--<span class="status__arrow second arrw_img " id="x2"></span>-->
-                            <!--<span class="status__target" id="x3"></span>-->
-                        <!--</div>-->
-                    </div>
-                </div>
             </div>
         </main>
         <footer class="footer">

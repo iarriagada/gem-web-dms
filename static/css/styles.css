@@ -57,10 +57,15 @@ html {
     margin: 5px 0;
 }
 
-.ecs_pwr_body, .ecs_init, .mcs_sp, .crcs_sp {
+.ecs_pwr_cmd, .ecs_pwr_body, .ecs_init, .mcs_sp, .crcs_sp {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pwr_ind {
+    display: flex;
+    flex-direction: column;
 }
 
 .mcs_sp#mcs_az_pnl {
@@ -255,7 +260,54 @@ button.action_button:hover .bttn_img {
 
 button.action_button.drives {
     width: 140px;
+}
+
+/*button.action_button.crdrives {*/
+    /*width: 110px;*/
+/*}*/
+
+/*button.action_button.crdrives .bttn_text {*/
+    /*transform: translateX(0px);*/
+    /*width: 80px;*/
+/*}*/
+
+/*button.action_button.crdrives .bttn_img {*/
+    /*position: absolute;*/
+    /*height: 30px;*/
+    /*width: 30px;*/
+    /*transform: translateX(78px);*/
+/*}*/
+
+/*button.action_button:hover .bttn_img {*/
+    /*width: 110px;*/
+    /*transform: translateX(0);*/
+/*}*/
+
+/*Status indicator*/
+
+.status_indicator {
+    display: flex;
+    /*height: 40px;*/
+    /*width: 300px;*/
+    /*width: fit-content;*/
+    /*width: 100%;*/
+    align-items: center;
+    margin: 3px 0px;
+}
+
+.indicator__bg {
+    /*position: relative;*/
+    display: flex;
+    align-items: center;
+    background: #ddffcc;
+    /*border: 2px solid;*/
+    /*border-color: #449944;*/
+    color: rgb(10,100,10,0.75);
     height: 40px;
+    /*width: fit-content;*/
+    width: 40px;
+    border-radius: 20px;
+    padding: 0px 20px;
 }
 
 /*
@@ -346,6 +398,12 @@ button.action_button.drives {
 
 .arrw_img {
     background-image: url('../MOVE.svg');
+}
+
+.status__target.arm_st {
+    background-image: url('../DISARMED.svg');
+    width: 40px;
+    height: 40px;
 }
 
 @keyframes bounceAlpha {

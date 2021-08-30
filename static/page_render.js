@@ -7,6 +7,48 @@ function setPWRcolor(tag_id, val) {
     }
 }
 
+function setPwrState(tag_id, stban_id, icon_id, val) {
+    switch(val) {
+        case 0:
+            //$(tag_id).text('DISARMED');
+            $(stban_id).css('background', '#ff5555');
+            //$(stban_id).css('border-color', '#ff7575');
+            $(stban_id).css('color', '#ffff75');
+            $(icon_id).css('background-image', 'url("/static/DISARMED.svg")');
+            break;
+        case 1:
+            //$(tag_id).text('ARMED');
+            $(stban_id).css('background', '#11df11');
+            //$(stban_id).css('border-color', '#0a0aFa');
+            $(stban_id).css('color', '#0a0afa');
+            $(icon_id).css('background-image', 'url("/static/ARMED.svg")');
+            break;
+        default:
+            $(tag_id).text('Me no entender');
+    }
+}
+
+function setArmState(tag_id, stban_id, icon_id, val) {
+    switch(val) {
+        case 0:
+            $(tag_id).text('DISARMED');
+            $(stban_id).css('background', '#ff5555');
+            //$(stban_id).css('border-color', '#ff7575');
+            $(stban_id).css('color', '#ffff75');
+            $(icon_id).css('background-image', 'url("/static/DISARMED.svg")');
+            break;
+        case 1:
+            $(tag_id).text('ARMED');
+            $(stban_id).css('background', '#11df11');
+            //$(stban_id).css('border-color', '#0a0aFa');
+            $(stban_id).css('color', '#0a0afa');
+            $(icon_id).css('background-image', 'url("/static/ARMED.svg")');
+            break;
+        default:
+            $(tag_id).text('Me no entender');
+    }
+}
+
 function setDrvState(tag_id, stban_id, icon_id, val) {
     switch(val) {
         case 0:
@@ -15,14 +57,14 @@ function setDrvState(tag_id, stban_id, icon_id, val) {
         case 1:
             $(tag_id).text('DISASSERTED');
             $(stban_id).css('background', '#0000cc');
-            $(stban_id).css('border-color', '#ff7575');
+            //$(stban_id).css('border-color', '#ff7575');
             $(stban_id).css('color', '#ff7575');
             $(icon_id).css('background-image', 'url("/static/DISASSERTED.svg")');
             break;
         case 2:
             $(tag_id).text('ASSERTED');
             $(stban_id).css('background', '#008800');
-            $(stban_id).css('border-color', '#ffff00');
+            //$(stban_id).css('border-color', '#ffff00');
             $(stban_id).css('color', '#ffff00');
             $(icon_id).css('background-image', 'url("/static/ASSERTED.svg")');
             break;
@@ -210,6 +252,7 @@ function getMCSData(data) {
 
 function getCRCSData(data) {
     setDrvState("#crdrvst_txt", "#crdrv_state", "#crdrvst_tgt", data.crdrv_st);
+    setArmState("#crarmst_txt", "#crarm_state", "#crarmst_tgt", data.crarm_st);
     //setDrvState("#crdrv_state", data.crdrv_st);
     //$("#cr_state").text(data.cr_st);
     setMotionState("#cr", data.cr_st);
