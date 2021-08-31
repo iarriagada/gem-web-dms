@@ -1,30 +1,11 @@
-function setPWRcolor(tag_id, val) {
+function setPWRcolor(stban_id, icon_id, val) {
     // Set color for ON (green) and OFF (red)
     if (val) {
-        $(tag_id).css('background-color', '#00FF00');
+        $(stban_id).css('background', '#00ff00');
+        $(icon_id).css('background-image', 'url("/static/POWER-ON.svg")');
     } else {
-        $(tag_id).css('background-color', '#FF0000');
-    }
-}
-
-function setPwrState(tag_id, stban_id, icon_id, val) {
-    switch(val) {
-        case 0:
-            //$(tag_id).text('DISARMED');
-            $(stban_id).css('background', '#ff5555');
-            //$(stban_id).css('border-color', '#ff7575');
-            $(stban_id).css('color', '#ffff75');
-            $(icon_id).css('background-image', 'url("/static/DISARMED.svg")');
-            break;
-        case 1:
-            //$(tag_id).text('ARMED');
-            $(stban_id).css('background', '#11df11');
-            //$(stban_id).css('border-color', '#0a0aFa');
-            $(stban_id).css('color', '#0a0afa');
-            $(icon_id).css('background-image', 'url("/static/ARMED.svg")');
-            break;
-        default:
-            $(tag_id).text('Me no entender');
+        $(stban_id).css('background', '#FF0000');
+        $(icon_id).css('background-image', 'url("/static/POWER-OFF.svg")');
     }
 }
 
@@ -33,14 +14,12 @@ function setArmState(tag_id, stban_id, icon_id, val) {
         case 0:
             $(tag_id).text('DISARMED');
             $(stban_id).css('background', '#ff5555');
-            //$(stban_id).css('border-color', '#ff7575');
             $(stban_id).css('color', '#ffff75');
             $(icon_id).css('background-image', 'url("/static/DISARMED.svg")');
             break;
         case 1:
             $(tag_id).text('ARMED');
             $(stban_id).css('background', '#11df11');
-            //$(stban_id).css('border-color', '#0a0aFa');
             $(stban_id).css('color', '#0a0afa');
             $(icon_id).css('background-image', 'url("/static/ARMED.svg")');
             break;
@@ -96,28 +75,21 @@ function setMotionState(axis, val) {
             $(icostop_id).css('display', 'none');
             $(txt_id).text(val);
             $(stban_id).css('background', '#e5ffc2');
-            //$(stban_id).css('border-color', '#008f00');
             $(stban_id).css('color', '#008f00');
             $(arrw1_id).addClass('bounceAlpha');
             $(arrw2_id).addClass('bounceAlpha');
             $(tgt_id).removeClass('pulseTarget');
-            //$(icon_id).css('background-image', 'url("/static/TARGET.svg")');
             break;
         case "SLEWING":
             $(icotrack_id).css('display', 'flex');
             $(icobrake_id).css('display', 'none');
             $(icostop_id).css('display', 'none');
             $(txt_id).text(val);
-            //$(stban_id).css('background', '#0000ff');
-            //$(stban_id).css('border-color', '#ff8080');
-            //$(stban_id).css('color', '#ff8080');
             $(stban_id).css('background', '#ccfffb');
-            //$(stban_id).css('border-color', '#008f00');
             $(stban_id).css('color', '#008f00');
             $(arrw1_id).removeClass('bounceAlpha');
             $(arrw2_id).removeClass('bounceAlpha');
             $(tgt_id).addClass('pulseTarget');
-            //$(icon_id).css('background-image', 'url("/static/TARGET.svg")');
             break;
         case "STATIONARY":
             $(icotrack_id).css('display', 'none');
@@ -125,9 +97,7 @@ function setMotionState(axis, val) {
             $(icostop_id).css('display', 'flex');
             $(txt_id).text(val);
             $(stban_id).css('background', '#c7f0ff');
-            //$(stban_id).css('border-color', '#eb0000');
             $(stban_id).css('color', '#eb0000');
-            //$(icon_id).css('background-image', 'url("/static/STATIONARY.svg")');
             break;
         case "BRAKED":
             $(icotrack_id).css('display', 'none');
@@ -139,9 +109,7 @@ function setMotionState(axis, val) {
             $(brk2_id).removeClass('releaseBrakes');
             $(txt_id).text(val);
             $(stban_id).css('background', '#ffe7e7');
-            //$(stban_id).css('border-color', '#d60000');
             $(stban_id).css('color', '#d60000');
-            //$(icon_id).css('background-image', 'url("/static/BRAKED.svg")');
             break;
         case "APPLY BRAKES":
             $(icotrack_id).css('display', 'none');
@@ -198,11 +166,16 @@ $("#hb").text(data.tcs_hb);
 }
 
 function getECSPwrStatus(data) {
-    setPWRcolor("#dome_pwr", data.dome_pwr);
-    setPWRcolor("#ts_pwr", data.ts_pwr);
-    setPWRcolor("#bs_pwr", data.bs_pwr);
-    setPWRcolor("#evg_pwr", data.evg_pwr);
-    setPWRcolor("#wvg_pwr", data.wvg_pwr);
+    //setPWRcolor("#dome_pwr", data.dome_pwr);
+    setPWRcolor("#dmpwr_state", "#dmpwr_tgt", data.dome_pwr);
+    setPWRcolor("#tspwr_state", "#tspwr_tgt", data.ts_pwr);
+    setPWRcolor("#bspwr_state", "#bspwr_tgt", data.bs_pwr);
+    setPWRcolor("#evpwr_state", "#evpwr_tgt", data.evg_pwr);
+    setPWRcolor("#wvpwr_state", "#wvpwr_tgt", data.wvg_pwr);
+    //setPWRcolor("#ts_pwr", data.ts_pwr);
+    //setPWRcolor("#bs_pwr", data.bs_pwr);
+    //setPWRcolor("#evg_pwr", data.evg_pwr);
+    //setPWRcolor("#wvg_pwr", data.wvg_pwr);
 }
 
 function getDomeData(data) {
@@ -243,20 +216,14 @@ function getMCSData(data) {
     setDrvState("#azdrvst_txt", "#azdrv_state", "#azdrvst_tgt", data.azdrv_st);
     setDrvState("#eldrvst_txt", "#eldrv_state", "#eldrvst_tgt", data.eldrv_st);
     setMotionState("#az", data.az_st);
-    //setMotionState("#azmotnst_txt", "#azmotn_state", "#azmotn_a1", "#azmotn_a2", "#azmotnst_tgt", data.az_st);
-    //$("#azmotnst_txt").text(data.az_st);
     setMotionState("#el", data.el_st);
-    //setMotionState("#elmotnst_txt", "#elmotn_state", "#elmotn_a1", "#elmotn_a2", "#elmotnst_tgt", data.el_st);
-    //$("#elmotnst_txt").text(data.el_st);
 }
 
 function getCRCSData(data) {
     setDrvState("#crdrvst_txt", "#crdrv_state", "#crdrvst_tgt", data.crdrv_st);
     setArmState("#crarmst_txt", "#crarm_state", "#crarmst_tgt", data.crarm_st);
-    //setDrvState("#crdrv_state", data.crdrv_st);
-    //$("#cr_state").text(data.cr_st);
     setMotionState("#cr", data.cr_st);
-    setPWRcolor("#crarm_state", data.crarm_st);
+    //setPWRcolor("#crarm_state", data.crarm_st);
 }
 
 function getGISData(data) {
