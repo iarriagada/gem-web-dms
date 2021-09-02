@@ -338,6 +338,15 @@ button.action_button.drives {
     margin: 3px 0px;
 }
 
+.status_banner.small {
+    display: flex;
+    height: 40px;
+    /*width: 300px;*/
+    /*width: fit-content;*/
+    width: 140px;
+    margin: 3px 0px 3px 3px;
+}
+
 .status__bg {
     position: relative;
     display: flex;
@@ -419,6 +428,13 @@ button.action_button.drives {
     background-image: url('../DISARMED.svg');
     width: 40px;
     height: 40px;
+}
+
+.status__target.health_st {
+    /*background-image: url('../DISARMED.svg');*/
+    width: 30px;
+    height: 26px;
+    transform: translateX(0px);
 }
 
 @keyframes bounceAlpha {

@@ -34,20 +34,34 @@
                 <section class="sys_panel" id="ecs_power">
                     <h1 id="ecs_pwr_title" class="panel_title">ECS Power Control</h1>
                     <div class="sys_subpanel ecs_init">
-                        <div class="ecs_init__cmd">
-                            <span class="ecs_init__cmd-label">Initialize</span>
-                            <button class="ecs_init__cmd-bttn">INIT</button>
+                        <!--<div class="ecs_init__cmd">-->
+                            <!--<span class="ecs_init__cmd-label">Initialize</span>-->
+                            <!--<button class="ecs_init__cmd-bttn">INIT</button>-->
+                        <!--</div>-->
+                        <div class="ctrl_bttns">
+                            <button id="ecsinit_bttn" class="action_button ecsdrives action arm">
+                                <div class="bttn_text">INIT</div>
+                                <div class="bttn_img"><img id="ecsinit_icon" src="/static/INIT.svg" alt="init icon"></div>
+                            </button>
+                        </div>
+                        <div class="status_banner small">
+                            <div class="status__bg" id="ecshealth_state">
+                                <div class="status_text" id="ecshealth_txt">BAD</div>
+                                <div class="status__ico" id="ecshealth_ico">
+                                    <span class="status__target health_st" id="ecshealth_tgt"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="sys_subpanel ecs_pwr_cmd">
                         <div class="ctrl_bttns">
-                            <button id="ecson_bttn" class="action_button crdrives action arm">
+                            <button id="ecson_bttn" class="action_button ecsdrives action arm">
                                 <div class="bttn_text">ON</div>
-                                <div class="bttn_img"><img id="crass_icon" src="/static/ARM.svg" alt="assert icon"></div>
+                                <div class="bttn_img"><img id="ecson_icon" src="/static/ON-B.svg" alt="on icon"></div>
                             </button>
-                            <button id="ecsoff_bttn" class="action_button crdrives reaction disarm">
+                            <button id="ecsoff_bttn" class="action_button ecsdrives reaction disarm">
                                 <div class="bttn_text">OFF</div>
-                                <div class="bttn_img"><img id="crdass_icon" src="/static/DISARM.svg" alt="assert icon"></div>
+                                <div class="bttn_img"><img id="ecsoff_icon" src="/static/OFF-B.svg" alt="off icon"></div>
                             </button>
                         </div>
                     </div>
@@ -202,11 +216,11 @@
                             <div class="ctrl_bttns">
                                 <button id="crarm_bttn" class="action_button crdrives action arm">
                                     <div class="bttn_text">ARM</div>
-                                    <div class="bttn_img"><img id="crass_icon" src="/static/ARM.svg" alt="assert icon"></div>
+                                    <div class="bttn_img"><img id="crarm_icon" src="/static/ARM.svg" alt="assert icon"></div>
                                 </button>
                                 <button id="crdarm_bttn" class="action_button crdrives reaction disarm">
                                     <div class="bttn_text">DISARM</div>
-                                    <div class="bttn_img"><img id="crdass_icon" src="/static/DISARM.svg" alt="assert icon"></div>
+                                    <div class="bttn_img"><img id="crdarm_icon" src="/static/DISARM.svg" alt="assert icon"></div>
                                 </button>
                             </div>
                             <div class="status_banner">

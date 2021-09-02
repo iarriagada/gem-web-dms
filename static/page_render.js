@@ -9,6 +9,24 @@ function setPWRcolor(stban_id, icon_id, val) {
     }
 }
 
+function setHealthState(tag_id, stban_id, icon_id, val) {
+    $(tag_id).text(val);
+    switch(val) {
+        case "BAD":
+            $(stban_id).css('background', '#8f0000');
+            $(stban_id).css('color', '#ffbbbb');
+            $(icon_id).css('background-image', 'url("/static/HBAD.svg")');
+            break;
+        case "GOOD":
+            $(stban_id).css('background', '#008f00');
+            $(stban_id).css('color', '#88ff88');
+            $(icon_id).css('background-image', 'url("/static/HGOOD.svg")');
+            break;
+        default:
+            break;
+    }
+}
+
 function setArmState(tag_id, stban_id, icon_id, val) {
     switch(val) {
         case 0:
@@ -172,6 +190,7 @@ function getECSPwrStatus(data) {
     setPWRcolor("#bspwr_state", "#bspwr_tgt", data.bs_pwr);
     setPWRcolor("#evpwr_state", "#evpwr_tgt", data.evg_pwr);
     setPWRcolor("#wvpwr_state", "#wvpwr_tgt", data.wvg_pwr);
+    setHealthState("#ecshealth_txt", "#ecshealth_state", "#ecshealth_tgt", data.ecs_hlth);
     //setPWRcolor("#ts_pwr", data.ts_pwr);
     //setPWRcolor("#bs_pwr", data.bs_pwr);
     //setPWRcolor("#evg_pwr", data.evg_pwr);

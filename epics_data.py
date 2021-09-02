@@ -7,7 +7,7 @@ EPICS_IPS = "172.17.2.36 172.17.2.31 172.17.2.61 172.17.2.30 172.17.2.32 \
 chan_dict = {
     "tcs:heartbeat":['tcs_hb', 'test_update'],
     "tcs:LST":['tcs_lst', 'test_update'],
-    "ec:health":['ecs_hlth', 'ecs_update'],
+    "ec:health.OMSS":['ecs_hlth', 'ecs_update'],
     "ec:state.OMSS":['ecs_state', 'ecs_update'],
     "ec:tsDriveStat":['ts_pwr', 'ecs_update'],
     "ec:topShtrState.OMSS":['ts_st', 'ecs_update'],
