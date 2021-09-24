@@ -33,13 +33,13 @@
                 <!--ecs motors section-->
                 <section class="sys_panel" id="ecs_power">
                     <h1 id="ecs_pwr_title" class="panel_title">ECS Power Control</h1>
-                    <div class="sys_subpanel ecs_init">
+                    <section class="sys_subpanel ecs_init">
                         <!--<div class="ecs_init__cmd">-->
                             <!--<span class="ecs_init__cmd-label">Initialize</span>-->
                             <!--<button class="ecs_init__cmd-bttn">INIT</button>-->
                         <!--</div>-->
                         <div class="ctrl_bttns">
-                            <button id="ecsinit_bttn" class="action_button ecsdrives action arm">
+                            <button id="ecsinit_bttn" class="action_button ecsdrives action init">
                                 <div class="bttn_text">INIT</div>
                                 <div class="bttn_img"><img id="ecsinit_icon" src="/static/INIT.svg" alt="init icon"></div>
                             </button>
@@ -52,20 +52,20 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="sys_subpanel ecs_pwr_cmd">
+                    </section>
+                    <section class="sys_subpanel ecs_pwr_cmd">
                         <div class="ctrl_bttns">
-                            <button id="ecson_bttn" class="action_button ecsdrives action arm">
+                            <button id="ecson_bttn" class="action_button ecsdrives action on">
                                 <div class="bttn_text">ON</div>
                                 <div class="bttn_img"><img id="ecson_icon" src="/static/ON-B.svg" alt="on icon"></div>
                             </button>
-                            <button id="ecsoff_bttn" class="action_button ecsdrives reaction disarm">
+                            <button id="ecsoff_bttn" class="action_button ecsdrives reaction off">
                                 <div class="bttn_text">OFF</div>
                                 <div class="bttn_img"><img id="ecsoff_icon" src="/static/OFF-B.svg" alt="off icon"></div>
                             </button>
                         </div>
-                    </div>
-                    <div class="sys_subpanel ecs_pwr_body">
+                    </section>
+                    <section class="sys_subpanel ecs_pwr_body">
                         <!--<div class="main__onoff">-->
                             <!--<span class="main__onoff-label">Power</span>-->
                             <!--<button class="main__onoff-on">ON</button><button class="main__onoff-off">OFF</button>-->
@@ -112,17 +112,36 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<ul class="section_col">-->
-                            <!--<li class="ecs_mech__status"><span class="indicator" id="dome_pwr"></span> Dome</li>-->
-                            <!--<li class="ecs_mech__status"><span class="indicator" id="ts_pwr"></span> Top Shutter</li>-->
-                            <!--<li class="ecs_mech__status"><span class="indicator" id="bs_pwr"></span> Bottom Shutter</li>-->
-                            <!--<li class="ecs_mech__status"><span class="indicator" id="evg_pwr"></span> East Ventgate</li>-->
-                            <!--<li class="ecs_mech__status"><span class="indicator" id="wvg_pwr"></span> West Ventgate</li>-->
-                        <!--</ul>-->
-                    </div>
+                    </section>
                 </section>
                 <!--ecs movement control section-->
                 <section class="sys_panel" id="ecs_svclose">
+                    <h1 id="ecs_mtn_title" class="panel_title">ECS Motion Control</h1>
+                    <section class="sys_subpanel ts_close">
+                        <!--<div class="ecs_init__cmd">-->
+                            <!--<span class="ecs_init__cmd-label">Initialize</span>-->
+                            <!--<button class="ecs_init__cmd-bttn">INIT</button>-->
+                        <!--</div>-->
+                        <div id="tshtr_l" class="axis_ctrl left">
+                            <p class="axis_lbl">Top Shutter</p>
+                        </div>
+                        <div id="tshtr_l" class="axis_ctrl right">
+                            <div class="ctrl_bttns_bnnr">
+                                <button id="tsclose_bttn" class="action_button ecsmtn action close">
+                                    <div class="bttn_text">INIT</div>
+                                    <div class="bttn_img"><img id="close_icon" src="/static/INIT.svg" alt="close icon"></div>
+                                </button>
+                                <div class="status_banner small">
+                                    <div class="status__bg" id="tsmtn_state">
+                                        <div class="status_text" id="tsmtn_txt">BAD</div>
+                                        <div class="status__ico" id="tsmtn_ico">
+                                            <span class="status__target tsmtn_st" id="tsmtn_tgt"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <p>Place holder for Shutters and Vents Table</p>
                     <p>Shutters</p>
                     <button class="main__cmd-bttn">CLOSE SHUTTERS</button>
@@ -191,6 +210,7 @@
                     <p>Status: <span id="icvr_status">Open</span></p>
                 </section>
             </div>
+            <!--RIGHT PANEL-->
             <div class="right_p">
                 <section class="sys_panel" id="hbs">
                     <p>Place holder for HBS control</p>

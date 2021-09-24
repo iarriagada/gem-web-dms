@@ -57,7 +57,8 @@ html {
     margin: 5px 0;
 }
 
-.ecs_pwr_cmd, .ecs_pwr_body, .ecs_init, .mcs_sp, .crcs_sp {
+/*.ecs_pwr_cmd, .ecs_pwr_body, .ecs_init, .mcs_sp, .crcs_sp {*/
+.sys_subpanel {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,7 +161,7 @@ html {
 
 /* Start of Assert/Disassert Buttons style specs */
 
-.ctrl_bttns {
+.ctrl_bttns,  .ctrl_bttns_bnnr{
     display: flex;
     align-items: center;
     margin: 3px 0px;
@@ -339,8 +340,8 @@ button.action_button.drives {
 }
 
 .status_banner.small {
-    display: flex;
-    height: 40px;
+    /*display: flex;*/
+    /*height: 40px;*/
     /*width: 300px;*/
     /*width: fit-content;*/
     width: 140px;
@@ -481,7 +482,7 @@ button.action_button.drives {
     background-image: url('../STATIONARY.svg');
     width: 30px;
     height: 30px;
-    transform: translateX(0px);
+    transform: translateX(10px);
 }
 
 /*brakes configuration*/

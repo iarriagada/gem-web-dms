@@ -85,6 +85,7 @@ function setMotionState(axis, val) {
     var icotrack_id = axis + "tracking_ico";
     var icostop_id = axis + "stopped_ico";
     var icobrake_id = axis + "brakes_ico";
+    var icoimg_id = axis + "motnst_stop";
 
     switch(val) {
         case "TRACKING":
@@ -110,6 +111,7 @@ function setMotionState(axis, val) {
             $(tgt_id).addClass('pulseTarget');
             break;
         case "STATIONARY":
+            $(icoimg_id).css('background-image', 'url("/static/STATIONARY.svg")');
             $(icotrack_id).css('display', 'none');
             $(icobrake_id).css('display', 'none');
             $(icostop_id).css('display', 'flex');
@@ -150,6 +152,15 @@ function setMotionState(axis, val) {
             $(brk2_id).addClass('releaseBrakes');
             $(brk1_id).removeClass('applyBrakes');
             $(brk2_id).removeClass('applyBrakes');
+            break;
+        case "INTERLOCK":
+            $(icoimg_id).css('background-image', 'url("/static/INTERLOCK.svg")');
+            $(icotrack_id).css('display', 'none');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'flex');
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#ffff00');
+            $(stban_id).css('color', '#000000');
             break;
         default:
             $(txt_id).text(val);
