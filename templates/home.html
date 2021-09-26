@@ -117,31 +117,159 @@
                 <!--ecs movement control section-->
                 <section class="sys_panel" id="ecs_svclose">
                     <h1 id="ecs_mtn_title" class="panel_title">ECS Motion Control</h1>
-                    <section class="sys_subpanel ts_close">
-                        <!--<div class="ecs_init__cmd">-->
-                            <!--<span class="ecs_init__cmd-label">Initialize</span>-->
-                            <!--<button class="ecs_init__cmd-bttn">INIT</button>-->
-                        <!--</div>-->
-                        <div id="tshtr_l" class="axis_ctrl left">
+                    <section class="sys_subpanel ts_mtn_sp" id="ts_mtn_pnl">
+                        <div id="ts_mtn_l" class="axis_ctrl left">
                             <p class="axis_lbl">Top Shutter</p>
                         </div>
-                        <div id="tshtr_l" class="axis_ctrl right">
-                            <div class="ctrl_bttns_bnnr">
-                                <button id="tsclose_bttn" class="action_button ecsmtn action close">
-                                    <div class="bttn_text">INIT</div>
-                                    <div class="bttn_img"><img id="close_icon" src="/static/INIT.svg" alt="close icon"></div>
-                                </button>
-                                <div class="status_banner small">
-                                    <div class="status__bg" id="tsmtn_state">
-                                        <div class="status_text" id="tsmtn_txt">BAD</div>
-                                        <div class="status__ico" id="tsmtn_ico">
-                                            <span class="status__target tsmtn_st" id="tsmtn_tgt"></span>
-                                        </div>
+                        <div id="ts_mtn_r" class="axis_ctrl right">
+                            <div class="status_banner">
+                                <div class="status__bg" id="tspos_state">
+                                    <div class="status_text" id="tsposst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="tsposst_ico">
+                                        <span class="status__target drive_st" id="tsposst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="tsmtn_state">
+                                    <div class="status_text" id="tsmtnst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="tsmoving_ico">
+                                        <span class="status__arrow first arrw_img " id="tsmtn_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="tsmtn_a2"></span>
+                                        <span class="status__target motion_st" id="tsmtnst_tgt"></span>
+                                    </div>
+                                    <div class="status__ico stopped" id="tsstopped_ico">
+                                        <span class="status__stop motion_st" id="tsmtnst_stop"></span>
+                                    </div>
+                                    <div class="status__ico" id="tsparking_ico">
+                                        <span class="status__brake left_b brk_img " id="tsmtn_b1"></span>
+                                        <span class="status__brkpad motion_st" id="tsmtnst_brk"></span>
+                                        <span class="status__brake right_b brk_img " id="tsmtn_b2"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
+                    <section class="sys_subpanel bs_mtn_sp" id="bs_mtn_pnl">
+                        <div id="bs_mtn_l" class="axis_ctrl left">
+                            <p class="axis_lbl">Bottom Shutter</p>
+                        </div>
+                        <div id="bs_mtn_r" class="axis_ctrl right">
+                            <div class="status_banner">
+                                <div class="status__bg" id="tspos_state">
+                                    <div class="status_text" id="tsposst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="tsposst_ico">
+                                        <span class="status__target drive_st" id="tsposst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="bsmtn_state">
+                                    <div class="status_text" id="bsmtnst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="bsmoving_ico">
+                                        <span class="status__arrow first arrw_img " id="bsmtn_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="bsmtn_a2"></span>
+                                        <span class="status__target motion_st" id="bsmtnst_tgt"></span>
+                                    </div>
+                                    <div class="status__ico stopped" id="bsstopped_ico">
+                                        <span class="status__stop motion_st" id="bsmtnst_stop"></span>
+                                    </div>
+                                    <div class="status__ico" id="bsparking_ico">
+                                        <span class="status__brake left_b brk_img " id="bsmtn_b1"></span>
+                                        <span class="status__brkpad motion_st" id="bsmtnst_brk"></span>
+                                        <span class="status__brake right_b brk_img " id="bsmtn_b2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sys_subpanel ev_mtn_sp" id="ev_mtn_pnl">
+                        <div id="ev_mtn_l" class="axis_ctrl left">
+                            <p class="axis_lbl">East Ventgate</p>
+                        </div>
+                        <div id="ev_mtn_r" class="axis_ctrl right">
+                            <div class="status_banner">
+                                <div class="status__bg" id="tspos_state">
+                                    <div class="status_text" id="tsposst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="tsposst_ico">
+                                        <span class="status__target drive_st" id="tsposst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="evmtn_state">
+                                    <div class="status_text" id="evmtnst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="evmoving_ico">
+                                        <span class="status__arrow first arrw_img " id="evmtn_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="evmtn_a2"></span>
+                                        <span class="status__target motion_st" id="evmtnst_tgt"></span>
+                                    </div>
+                                    <div class="status__ico stopped" id="evstopped_ico">
+                                        <span class="status__stop motion_st" id="evmtnst_stop"></span>
+                                    </div>
+                                    <div class="status__ico" id="evparking_ico">
+                                        <span class="status__brake left_b brk_img " id="evmtn_b1"></span>
+                                        <span class="status__brkpad motion_st" id="evmtnst_brk"></span>
+                                        <span class="status__brake right_b brk_img " id="evmtn_b2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sys_subpanel wv_mtn_sp" id="wv_mtn_pnl">
+                        <div id="wv_mtn_l" class="axis_ctrl left">
+                            <p class="axis_lbl">West Ventgate</p>
+                        </div>
+                        <div id="wv_mtn_r" class="axis_ctrl right">
+                            <div class="status_banner">
+                                <div class="status__bg" id="tspos_state">
+                                    <div class="status_text" id="tsposst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="tsposst_ico">
+                                        <span class="status__target drive_st" id="tsposst_tgt"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status_banner">
+                                <div class="status__bg" id="wvmtn_state">
+                                    <div class="status_text" id="wvmtnst_txt">RELEASE BRAKES</div>
+                                    <div class="status__ico" id="wvmoving_ico">
+                                        <span class="status__arrow first arrw_img " id="wvmtn_a1"></span>
+                                        <span class="status__arrow second arrw_img " id="wvmtn_a2"></span>
+                                        <span class="status__target motion_st" id="wvmtnst_tgt"></span>
+                                    </div>
+                                    <div class="status__ico stopped" id="wvstopped_ico">
+                                        <span class="status__stop motion_st" id="wvmtnst_stop"></span>
+                                    </div>
+                                    <div class="status__ico" id="wvparking_ico">
+                                        <span class="status__brake left_b brk_img " id="wvmtn_b1"></span>
+                                        <span class="status__brkpad motion_st" id="wvmtnst_brk"></span>
+                                        <span class="status__brake right_b brk_img " id="wvmtn_b2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--<section class="sys_subpanel ts_close">-->
+                        <!--<div id="tshtr_l" class="axis_ctrl left">-->
+                            <!--<p class="axis_lbl">Top Shutter</p>-->
+                        <!--</div>-->
+                        <!--<div id="tshtr_l" class="axis_ctrl right">-->
+                            <!--<div class="ctrl_bttns_bnnr">-->
+                                <!--<button id="tsclose_bttn" class="action_button ecsmtn action close">-->
+                                    <!--<div class="bttn_text">INIT</div>-->
+                                    <!--<div class="bttn_img"><img id="close_icon" src="/static/INIT.svg" alt="close icon"></div>-->
+                                <!--</button>-->
+                                <!--<div class="status_banner small">-->
+                                    <!--<div class="status__bg" id="tsmtn_state">-->
+                                        <!--<div class="status_text" id="tsmtn_txt">BAD</div>-->
+                                        <!--<div class="status__ico" id="tsmtn_ico">-->
+                                            <!--<span class="status__target tsmtn_st" id="tsmtn_tgt"></span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</section>-->
                     <p>Place holder for Shutters and Vents Table</p>
                     <p>Shutters</p>
                     <button class="main__cmd-bttn">CLOSE SHUTTERS</button>

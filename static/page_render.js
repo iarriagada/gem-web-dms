@@ -167,6 +167,91 @@ function setMotionState(axis, val) {
     }
 }
 
+function setECSMotionState(axis, val) {
+    var txt_id = axis + "mtnst_txt";
+    var stban_id = axis + "mtn_state";
+    var arrw1_id = axis + "mtn_a1";
+    var arrw2_id = axis + "mtn_a2";
+    var tgt_id = axis + "mtnst_tgt";
+    var brk1_id = axis + "mtn_b1";
+    var brk2_id = axis + "mtn_b2";
+    var icon_id = axis + "mtnst_tgt";
+    var icotrack_id = axis + "moving_ico";
+    var icostop_id = axis + "stopped_ico";
+    var icobrake_id = axis + "parking_ico";
+    var icoimg_id = axis + "mtnst_stop";
+
+    switch(val) {
+        case "STOPPED":
+            $(icotrack_id).css('display', 'flex');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'none');
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#e5ffc2');
+            $(stban_id).css('color', '#008f00');
+            $(arrw1_id).addClass('bounceAlpha');
+            $(arrw2_id).addClass('bounceAlpha');
+            $(tgt_id).removeClass('pulseTarget');
+            break;
+        case "STOPPING":
+            $(icotrack_id).css('display', 'flex');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'none');
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#ccfffb');
+            $(stban_id).css('color', '#008f00');
+            $(arrw1_id).removeClass('bounceAlpha');
+            $(arrw2_id).removeClass('bounceAlpha');
+            $(tgt_id).addClass('pulseTarget');
+            break;
+        case "MOVING":
+            $(icoimg_id).css('background-image', 'url("/static/STATIONARY.svg")');
+            $(icotrack_id).css('display', 'none');
+            $(icobrake_id).css('display', 'none');
+            $(icostop_id).css('display', 'flex');
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#c7f0ff');
+            $(stban_id).css('color', '#eb0000');
+            break;
+        case "PARKING":
+            $(icotrack_id).css('display', 'none');
+            $(icobrake_id).css('display', 'flex');
+            $(icostop_id).css('display', 'none');
+            $(brk1_id).removeClass('applyBrakes');
+            $(brk2_id).removeClass('applyBrakes');
+            $(brk1_id).removeClass('releaseBrakes');
+            $(brk2_id).removeClass('releaseBrakes');
+            $(txt_id).text(val);
+            $(stban_id).css('background', '#ffe7e7');
+            $(stban_id).css('color', '#d60000');
+            break;
+        case "OFFLINE":
+            $(icotrack_id).css('display', 'none');
+            $(icobrake_id).css('display', 'flex');
+            $(icostop_id).css('display', 'none');
+            $(brk1_id).removeClass('applyBrakes');
+            $(brk2_id).removeClass('applyBrakes');
+            $(txt_id).text(val);
+            $(brk1_id).addClass('applyBrakes');
+            $(brk2_id).addClass('applyBrakes');
+            $(brk1_id).removeClass('releaseBrakes');
+            $(brk2_id).removeClass('releaseBrakes');
+            break;
+        case "ERROR":
+            $(icotrack_id).css('display', 'none');
+            $(icobrake_id).css('display', 'flex');
+            $(icostop_id).css('display', 'none');
+            $(txt_id).text(val);
+            $(brk1_id).addClass('releaseBrakes');
+            $(brk2_id).addClass('releaseBrakes');
+            $(brk1_id).removeClass('applyBrakes');
+            $(brk2_id).removeClass('applyBrakes');
+            break;
+        default:
+            $(txt_id).text(val);
+    }
+}
+
 function setSeqMess(tag_id, val) {
     switch(val) {
         case 0:
@@ -216,8 +301,10 @@ function getDomeData(data) {
 function getShuttersData(data) {
     $("#ts_state").text(data.ts_st);
     $("#ts_position").text(data.ts_pos);
+    setECSMotionState("#ts", data.ts_st);
     $("#bs_state").text(data.bs_st);
     $("#bs_position").text(data.bs_pos);
+    setECSMotionState("#bs", data.bs_st);
     if (data.ac_st) {
         $("#autoc_state").text("READY");
         $("#autoc_state").css('color', '#00FF00');
@@ -230,11 +317,13 @@ function getShuttersData(data) {
 function getEVGData(data) {
     $("#evg_state").text(data.evg_st);
     $("#evg_position").text(data.evg_pos);
+    setECSMotionState("#ev", data.evg_st);
 }
 
 function getWVGData(data) {
     $("#wvg_state").text(data.wvg_st);
     $("#wvg_position").text(data.wvg_pos);
+    setECSMotionState("#wv", data.wvg_st);
 }
 
 function getEnvironData(data) {
